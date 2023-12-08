@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TVChannel>
+
+<div class="container">
+    <h1 class="mt-5">TV Channels</h1>
+
+    @foreach (var channel in Model)
+    {
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>@channel.Name</h2>
+            </div>
+
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var program in channel.Programs)
+                    {
+                        <div class="mb-3">
+                            <h4>@program.Name</h4>
+                            <div>
+                                <span class="badge bg-primary">@program.Genre</span> <!-- Display program genre -->
+                                <span class="badge bg-secondary">Age Rating: @program.AgeRating</span> <!-- Display age rating -->
+                            </div>
+
+                            <!-- Display airing schedules -->
+                            <table class="table table-bordered mt-2">
+                                <thead>
+                                    <tr>
+                                        <th>Airing Day</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var airing in program.Scheduels)
+                                    {
+                                        <tr>
+                                            <td>@airing.Day</td>
+                                            <td>@airing.Time</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
