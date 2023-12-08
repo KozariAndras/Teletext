@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Teletext.Models;
 
-public class AiringScheduel
+public class AiringSchedule
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,14 +23,14 @@ public class AiringScheduel
     public TimeSpan Time { get; set; }
 
     
-    public AiringScheduel(DayOfWeek day, TimeSpan time, TVProgram program)
+    public AiringSchedule(DayOfWeek day, TimeSpan time, TVProgram program)
     {
         TVProgram = program;
         Day = day;
         Time = time;
     }
     
-    public AiringScheduel()
+    public AiringSchedule()
     {
     }
     

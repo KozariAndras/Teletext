@@ -10,7 +10,7 @@ public class TeletextContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<TVChannel> Channels { get; set; }
     public DbSet<TVProgram> Programs { get; set; }
-    public DbSet<AiringScheduel> AiringSchedules { get; set; }
+    public DbSet<AiringSchedule> AiringSchedules { get; set; }
     public DbSet<TeletextUser> TeletextUsers { get; set; }
 
     public TeletextContext(DbContextOptions<TeletextContext> options)

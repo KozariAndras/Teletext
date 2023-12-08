@@ -46,7 +46,7 @@ namespace Teletext.Models
         [Required]
         public Genre Genre { get; set; }
 
-        public virtual List<AiringScheduel> Scheduels { get; set; }
+        public virtual List<AiringSchedule> Scheduels { get; set; }
 
         public virtual List<TeletextUser> FavBy { get; set; }
 
@@ -64,7 +64,7 @@ namespace Teletext.Models
 
             for (int i = 0; i < airDays.Count; i++)
             {
-                Scheduels.Add(new AiringScheduel(airDays[i], airTimes[i],this));
+                Scheduels.Add(new AiringSchedule(airDays[i], airTimes[i],this));
             }
 
         }
