@@ -46,14 +46,14 @@ namespace Teletext.Models
         [Required]
         public Genre Genre { get; set; }
 
-        public virtual List<AiringSchedule> Scheduels { get; set; }
+        public virtual List<AiringSchedule> Schedules { get; set; }
 
         public virtual List<TeletextUser> FavBy { get; set; }
 
 
         public TVProgram(string name, int duration, int ageRating, Genre programGenre,TVChannel channel, List<DayOfWeek> airDays, List<TimeSpan> airTimes)
         {
-            Scheduels = new();
+            Schedules = new();
             Name = name;
             AgeRating = ageRating;
             Duration = duration;
@@ -64,14 +64,14 @@ namespace Teletext.Models
 
             for (int i = 0; i < airDays.Count; i++)
             {
-                Scheduels.Add(new AiringSchedule(airDays[i], airTimes[i],this));
+                Schedules.Add(new AiringSchedule(airDays[i], airTimes[i],this));
             }
 
         }
 
         public TVProgram()
         {
-            Scheduels = new();
+            Schedules = new();
         }
 
     }

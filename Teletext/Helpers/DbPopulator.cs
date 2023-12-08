@@ -1,33 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Teletext.Areas.Identity.Data;
 using Teletext.Models;
+using Teletext.Services;
 
 namespace Teletext.Helpers
 {
     public class DbPopulator
     {
-        private readonly TeletextContext _context;
-        private List<TVChannel> _tVChannels = new();
-        private List<TVProgram> _tVPrograms = new();
+        private readonly ITeletextDataHandler _dataHandler;
+        private List<TVChannel> _tVChannels;
+        private List<TVProgram> _tVPrograms;
 
-        public DbPopulator(TeletextContext context)
+        public DbPopulator(ITeletextDataHandler dataHandler)
         {
-            _context = context;
+            _dataHandler = dataHandler;
+            _tVChannels = _dataHandler.GetAllTVChannels().Result;
+            _tVPrograms = _dataHandler.GetAllTVPrograms().Result;
         }
 
         public void CreateData()
         {     
-            if (_context.Channels.Count() == 0)
+            if (_tVChannels is null)
             {
-                _context.Programs.ExecuteDelete();
-                _context.AiringSchedules.ExecuteDelete();
+                _tVChannels = new List<TVChannel>();
+                _tVPrograms = new List<TVProgram>();
+                _dataHandler.DeleteAllTVPrograms();
+                _dataHandler.DeleteAllAiringSchedules();
                 CreateChannels();
                 CreatePrograms();
 
-                _context.Channels.AddRange(_tVChannels);
-                _context.Programs.AddRange(_tVPrograms);
-
-                _context.SaveChanges();            
+                _dataHandler.AddRangeTVChannel(_tVChannels);
+                _dataHandler.AddRangeTVProgram(_tVPrograms);          
             }
         }
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Teletext.Areas.Identity.Data;
 using Teletext.Helpers;
 using Teletext.Models;
+using Teletext.Services;
 
 namespace Teletext.Controllers
 {
@@ -11,7 +12,7 @@ namespace Teletext.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly TeletextContext _context;
+        private readonly ITeletextDataHandler _dataHandler;
 
         private DbPopulator _populator;
 
@@ -19,14 +20,14 @@ namespace Teletext.Controllers
         {
 
             _logger = logger;
-            _context = context;
-            _populator = new(_context);
+            _dataHandler = new EFDataHandler(context);
+            _populator = new(_dataHandler);
             _populator.CreateData();
         }
 
         public IActionResult Index()
         {
-            return View(_context.Channels.Include(c => c.Programs).ThenInclude(p => p.Scheduels).ToList());
+            return View(_dataHandler.GetAllTVChannels().Result);
         }
 
         public IActionResult Privacy()

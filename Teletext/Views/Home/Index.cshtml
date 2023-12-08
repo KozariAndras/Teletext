@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TVChannel>
+﻿@model List<TVChannel>
 
 <div class="container">
     <h1 class="mt-5">TV Channels</h1>
@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var airing in program.Scheduels)
+                                    @foreach (var airing in program.Schedules)
                                     {
                                         <tr>
                                             <td>@airing.Day</td>
