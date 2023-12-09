@@ -12,7 +12,7 @@ using Teletext.Areas.Identity.Data;
 namespace Teletext.Migrations
 {
     [DbContext(typeof(TeletextContext))]
-    [Migration("20231209153921_InitilaCreate")]
+    [Migration("20231209193111_InitilaCreate")]
     partial class InitilaCreate
     {
         /// <inheritdoc />
@@ -189,7 +189,7 @@ namespace Teletext.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Teletext.Areas.Identity.Data.Favourites", b =>
+            modelBuilder.Entity("Teletext.Models.Favourites", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -395,7 +395,7 @@ namespace Teletext.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Teletext.Areas.Identity.Data.Favourites", b =>
+            modelBuilder.Entity("Teletext.Models.Favourites", b =>
                 {
                     b.HasOne("Teletext.Models.TVProgram", "Program")
                         .WithMany("Favourites")

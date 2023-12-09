@@ -29,14 +29,14 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public async Task Add(TEntity entity)
     {
-        _context.Add(entity);
+        _context.Set<TEntity>().Add(entity);
         await _context.SaveChangesAsync();
     }
 
     public async Task AddRange(IEnumerable<TEntity> entities)
     {
         _context.Set<TEntity>().AddRange(entities);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();    
     }
 
     public async Task<TEntity> GetById(long id)
@@ -44,52 +44,75 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         return await _context.Set<TEntity>().FindAsync(id);
     }
 
-    public Task<List<TEntity>> GetAll()
+    public async Task<List<TEntity>> GetAll()
     {
-        return null;
+        return await _context.Set<TEntity>().ToListAsync();
     }
 
-    public Task Update(TEntity entity)
+    public async Task Update(TEntity entity)
     {
-        return Task.CompletedTask;
+        var result = await _context.Set<TEntity>().FindAsync(entity);
+        if (result is not null)
+        {
+            result = entity;
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task UpdateRange(List<TEntity> entities)
+    public async Task UpdateRange(List<TEntity> entities)
     {
-        return Task.CompletedTask;
+        foreach (var entity in entities)
+        {
+            var result = await _context.Set<TEntity>().FindAsync(entity);
+            if (result is not null)
+            {
+                result = entity;
+            }
+        }
+        await _context.SaveChangesAsync();
     }
 
-    public Task Delete(long id)
+    public async Task Delete(long id)
     {
-        return Task.CompletedTask;
+        _context.Set<TEntity>().Remove(await _context.Set<TEntity>().FindAsync(id));
+        await _context.SaveChangesAsync();
     }
 
-    public Task DeleteRange(List<TEntity> entities)
+    public async Task DeleteRange(List<TEntity> entities)
     {
-        return Task.CompletedTask;
+        foreach (var entity in entities)
+        {
+            _context.Set<TEntity>().Remove(entity);
+        }
+        await _context.SaveChangesAsync();
     }
 
-    public Task DeleteAll()
+    public async Task DeleteAll()
     {
-        return Task.CompletedTask;
+        if (_context.Set<TEntity>().Count() == 0) return;
+
+        _context.Set<TEntity>().RemoveRange(await _context.Set<TEntity>().ToListAsync());
+        await _context.SaveChangesAsync();
     }
 }
 
-public interface ITVProgramRepository : IRepository<TVProgram>
+
+public interface ITVChannelRepository : IRepository<TVChannel>
 {
-    Task<TeletextDto> GetChannels(TeletextUser user);
+    Task<TeletextDto> GetDTOChannels(TeletextUser user);
 }
 
-public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
+
+public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
 {
     private readonly TeletextContext _context;
 
-    public TVProgramRepository(TeletextContext context) : base(context)
+    public TVChannelRepository(TeletextContext context) : base(context)
     {
         _context = context;
     }
 
-    public async Task<TeletextDto> GetChannels(TeletextUser user)
+    public async Task<TeletextDto> GetDTOChannels(TeletextUser user)
     {
         var data = await _context.Channels
             .Include(m => m.Programs)
@@ -100,18 +123,102 @@ public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
         return new TeletextDto
         {
             User = user,
-            Channels = data.Select(c => new ChannelDto
+            Channels = data.Select(m => new ChannelDto
             {
-                Name = c.Name,
-                Programs = c.Programs.Select(p => new ProgramDto
+                Id = m.Id,
+                Name = m.Name,
+                Number = m.Number,
+                Programs = m.Programs.Select(m => new ProgramDto
                 {
-                    Name = p.Name,
-                    IsFavourite = p.Favourites.Any(f => f.UserId == user.Id),
-                    AiringSchedules = p.Schedules.Select(s => new AiringScheduleDto
+                    Id = m.Id,
+                    Name = m.Name,
+                    Duration = m.Duration,
+                    AgeRating = m.AgeRating,
+                    Genre = m.Genre,
+                    IsFavourite = m.Favourites.Any(f => f.UserId == user.Id),
+                    AiringSchedules = m.Schedules.Select(m => new AiringScheduleDto
                     {
+                        Id = m.Id,
+                        StartDate = m.StartDate,
+                        Day = m.Day,
+                        Time = m.Time
                     }).ToList()
                 }).ToList()
             }).ToList()
-        };  
+
+        };
+    }
+}
+
+public interface ITeletextRepository
+{
+    ITVChannelRepository Channels { get; }
+    EFRepository<TVProgram> Programs { get; }        
+    EFRepository<AiringSchedule> AiringSchedules { get; }
+    EFRepository<Favourites> Favourites { get; }
+}
+
+
+public class TeletextRepository : ITeletextRepository
+{
+    private TeletextContext _context;
+    private ITVChannelRepository? _channelRepo;
+    private EFRepository<TVProgram>? _programRepo;
+    private EFRepository<AiringSchedule>? _scheduleRepo;
+    private EFRepository<Favourites>? _favouriteRepo;
+
+    public ITVChannelRepository Channels 
+    {
+        get 
+        {
+            if (_channelRepo is null)
+            {
+                _channelRepo = new TVChannelRepository(_context);
+            }
+            return _channelRepo;           
+        }       
+    }
+
+    public EFRepository<TVProgram> Programs
+    {
+        get
+        {
+            if (_programRepo is null)
+            {
+                _programRepo = new EFRepository<TVProgram>(_context);
+            }
+            return _programRepo;
+        }
+    }
+
+    public EFRepository<AiringSchedule> AiringSchedules
+    {
+        get
+        {
+            if (_scheduleRepo is null)
+            {
+                _scheduleRepo = new EFRepository<AiringSchedule>(_context);
+            }
+            return _scheduleRepo;
+        }
+    }
+
+    public EFRepository<Favourites> Favourites
+    {
+        get
+        {
+            if (_favouriteRepo is null)
+            {
+                _favouriteRepo = new EFRepository<Favourites>(_context);
+            }
+            return _favouriteRepo;
+        }
+    }
+
+    private bool disposed = false;
+
+    public TeletextRepository(TeletextContext context)
+    {
+        _context = context;
     }
 }

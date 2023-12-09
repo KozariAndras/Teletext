@@ -25,6 +25,7 @@ public class ProgramDto
     public int Duration { get; set; }
     public int AgeRating { get; set; }
     public bool IsFavourite { get; set; }
+    public Genre Genre { get; set; }
 }
 
 public class AiringScheduleDto

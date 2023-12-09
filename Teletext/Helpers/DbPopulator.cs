@@ -7,30 +7,31 @@ namespace Teletext.Helpers
 {
     public class DbPopulator
     {
-        private readonly ITeletextDataHandler _dataHandler;
+        private readonly ITeletextRepository _repo;
         private List<TVChannel> _tVChannels;
         private List<TVProgram> _tVPrograms;
 
-        public DbPopulator(ITeletextDataHandler dataHandler)
+        public DbPopulator(ITeletextRepository repo)
         {
-            _dataHandler = dataHandler;
-            _tVChannels = _dataHandler.GetAllTVChannels().Result;
-            _tVPrograms = _dataHandler.GetAllTVPrograms().Result;
+            _repo = repo;
+            _tVChannels = _repo.Channels.GetAll().Result;
+            _tVPrograms = _repo.Programs.GetAll().Result;
         }
 
-        public void CreateData()
+        public async Task CreateData()
         {     
-            if (_tVChannels is null)
+            if (_tVChannels is null || _tVChannels.Count() == 0)
             {
-                _tVChannels = new List<TVChannel>();
-                _tVPrograms = new List<TVProgram>();
-                _dataHandler.DeleteAllTVPrograms();
-                _dataHandler.DeleteAllAiringSchedules();
+                _tVChannels = new List<TVChannel>();                
                 CreateChannels();
-                CreatePrograms();
+                await _repo.Channels.AddRange(_tVChannels);
+            }
 
-                _dataHandler.AddRangeTVChannel(_tVChannels);
-                _dataHandler.AddRangeTVProgram(_tVPrograms);          
+            if (_tVPrograms is null || _tVPrograms.Count() == 0)
+            {
+                _tVPrograms = new List<TVProgram>();
+                CreatePrograms();
+                await _repo.Programs.AddRange(_tVPrograms);
             }
         }
 

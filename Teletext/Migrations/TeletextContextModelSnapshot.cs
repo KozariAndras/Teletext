@@ -186,7 +186,7 @@ namespace Teletext.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Teletext.Areas.Identity.Data.Favourites", b =>
+            modelBuilder.Entity("Teletext.Models.Favourites", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -392,7 +392,7 @@ namespace Teletext.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Teletext.Areas.Identity.Data.Favourites", b =>
+            modelBuilder.Entity("Teletext.Models.Favourites", b =>
                 {
                     b.HasOne("Teletext.Models.TVProgram", "Program")
                         .WithMany("Favourites")

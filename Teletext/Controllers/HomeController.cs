@@ -14,38 +14,22 @@ namespace Teletext.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<TeletextUser> _userManager;
-        private readonly TeletextContext _context;
-        private readonly ITVProgramRepository _repo;
-        private readonly ITeletextDataHandler _dataHandler;
+        private readonly ITeletextRepository _repo;
+        //private readonly ITeletextDataHandler _dataHandler;
 
-        private DbPopulator _populator;
-
-        public HomeController(
-            ILogger<HomeController> logger, 
-            TeletextContext context, 
-            UserManager<TeletextUser> userManager, 
-            ITVProgramRepository repo)
+        public HomeController(ILogger<HomeController> logger, UserManager<TeletextUser> userManager, ITeletextRepository repo)
         {
-
             _logger = logger;
             _userManager = userManager;
-            _context = context;
-            _repo = repo;
-            _dataHandler = new EFDataHandler(context);
-            _populator = new(_dataHandler);
-            //_populator.CreateData();
-
-            
+            _repo = repo;          
         }
 
         public async Task<IActionResult> Index()
         {
             var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
-            var dto = await _repo.GetChannels(aspnetUser);
+            var dto = await _repo.Channels.GetDTOChannels(aspnetUser);
 
-            // return View(dto);
-
-            return View(_dataHandler.GetAllTVChannels().Result);
+            return View(dto);
         }
 
         public IActionResult Privacy()
@@ -62,7 +46,9 @@ namespace Teletext.Controllers
             ViewData.Add("TimeTo", timeTo);
             ViewData.Add("Genre", genre);
 
-            var filterdChannels = FilterAll(date, channelName, timeFrom, timeTo, genre);
+            //var filterdChannels = FilterAll(date, channelName, timeFrom, timeTo, genre);
+            var aspnetUser = _userManager.GetUserAsync(HttpContext.User).Result;
+            var filterdChannels = _repo.Channels.GetAll();
             return View("Index", filterdChannels);
         }
 
@@ -79,45 +65,6 @@ namespace Teletext.Controllers
             return Ok();
         }
 
-
-        private List<TVChannel> FilterAll(DateOnly date, string channelName, TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
-        {
-            var channels = _dataHandler.GetAllTVChannels().Result;
-            
-            FilterByDate(ref channels, date);
-            FilterByChannel(ref channels, channelName);
-            FilterByTime(ref channels, timeFrom, timeTo);
-            FilterByGenre(ref channels, genre);
-
-            return channels;
-        }
-
-        private void FilterByDate(ref List<TVChannel> channels,DateOnly date)
-        {
-            channels = channels.Where(c => c.Programs.Any(p => p.Schedules.Any(s => s.StartDate >= date))).ToList();
-        }
-
-        private void FilterByChannel(ref List<TVChannel> channels, string channelName)
-        {
-            if (channelName is null) return;
-
-            channels = channels.Where(c => c.Name == channelName).ToList();
-        }
-
-        private void FilterByTime(ref List<TVChannel> channels, TimeSpan timeFrom, TimeSpan timeTo)
-        {
-            if (timeFrom > timeTo) return;
-
-            channels = channels.Where(c => c.Programs.Any(p => p.Schedules.Any(s => s.Time >= timeFrom && s.Time <= timeTo))).ToList();
-        }
-
-        private void FilterByGenre(ref List<TVChannel> channels, Genre genre)
-        {
-            if (genre == Genre.All) return;
-
-            channels = channels.Where(c => c.Programs.Any(p => p.Genre == genre)).ToList();
-        }
-
         [Authorize, HttpGet]
         public async Task<IActionResult> AddToFavourites([FromQuery]long programId)
         {
@@ -128,9 +75,9 @@ namespace Teletext.Controllers
                 UserId = aspnetUser.Id,
                 ProgramId = programId
             };
-            _context.Favourites.Add(fav);   
-            await _context.SaveChangesAsync();
-
+            
+            await _repo.Favourites.Add(fav);
+            
             return RedirectToAction("Index");
         }
     }

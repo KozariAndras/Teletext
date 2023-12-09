@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Teletext.Models.TVChannel>
+﻿@using Teletext.Models.Dto;
+@model TeletextDto
 
 <div class="container">
     <h1 class="mt-5">TV Channels</h1>
@@ -9,13 +10,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="dateFilter">Date:</label>
-                        <input type="date" id="dateFilter" class="form-control" name="date" value="@ViewBag.Date">
+                        <input type="date" id="dateFilter" class="form-control" name="date">
                     </div>
                     <div class="col-md-6">
                         <label for="channelFilter">TV Channel:</label>
                         <select id="channelFilter" class="form-control" name="channel">
-                            <option value="" selected="@ViewBag.Channel">All</option>
-                            @foreach (var channel in Model)
+                            <option value="" >All</option>
+                            @foreach (var channel in Model.Channels)
                             {
                                 <option value="@channel.Name">@channel.Name</option>
                             }
@@ -23,17 +24,17 @@
                     </div>                   
                     <div class="col-md-6">
                         <label for="timeFilterFrom">Time From:</label>
-                        <input type="time" id="timeFilterFrom" class="form-control" name="timeFrom" value="@ViewBag.TimeFrom">
+                        <input type="time" id="timeFilterFrom" class="form-control" name="timeFrom">
                     </div>
                     <div class="col-md-6">
                         <label for="timeFilterTo">Time To:</label>
-                        <input type="time" id="timeFilterTo" class="form-control" name="timeTo" value="@ViewBag.TimeTo">
+                        <input type="time" id="timeFilterTo" class="form-control" name="timeTo">
                     </div>
                     <div class="col-md-6">
                         <label for="genreFilter">Genre:</label>
                         <select id="genreFilter" class="form-control" name="genre">
-                            <option value="" selected="@ViewBag.Genre">All</option>
-                            @foreach (var channel in Model)
+                            <option value="">All</option>
+                            @foreach (var channel in Model.Channels)
                             {
                                 foreach (var program in channel.Programs)
                                 {
@@ -50,7 +51,7 @@
         </form>
     </div>
 
-    @foreach (var channel in Model)
+    @foreach (var channel in Model.Channels)
     {
         <div class="card mt-4">
             <div class="card-header">
@@ -84,7 +85,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var airing in program.Schedules)
+                                    @foreach (var airing in program.AiringSchedules)
                                     {
                                         <tr>
                                             <td>@airing.Day</td>
