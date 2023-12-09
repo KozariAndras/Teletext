@@ -10,6 +10,7 @@ namespace Teletext.Models
 {
     public enum Genre
     {
+        All,
         News,
         Culinary,
         Movie,
@@ -48,7 +49,7 @@ namespace Teletext.Models
 
         public virtual List<AiringSchedule> Schedules { get; set; }
 
-        public virtual List<TeletextUser> FavBy { get; set; }
+        public virtual List<Favourites> Favourites { get; set; }
 
 
         public TVProgram(string name, int duration, int ageRating, Genre programGenre,TVChannel channel, List<DayOfWeek> airDays, List<TimeSpan> airTimes, DateOnly date)

@@ -30,7 +30,6 @@ namespace Teletext.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -181,11 +180,17 @@ namespace Teletext.Migrations
                     Duration = table.Column<int>(type: "int", nullable: false),
                     AgeRating = table.Column<int>(type: "int", nullable: false),
                     ChannelId = table.Column<long>(type: "bigint", nullable: false),
-                    Genre = table.Column<int>(type: "int", nullable: false)
+                    Genre = table.Column<int>(type: "int", nullable: false),
+                    TeletextUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Programs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Programs_AspNetUsers_TeletextUserId",
+                        column: x => x.TeletextUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Programs_Channels_ChannelId",
                         column: x => x.ChannelId,
@@ -217,24 +222,25 @@ namespace Teletext.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TVProgramTeletextUser",
+                name: "Favourites",
                 columns: table => new
                 {
-                    FavById = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FavouritesId = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProgramId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TVProgramTeletextUser", x => new { x.FavById, x.FavouritesId });
+                    table.PrimaryKey("PK_Favourites", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TVProgramTeletextUser_AspNetUsers_FavById",
-                        column: x => x.FavById,
+                        name: "FK_Favourites_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_TVProgramTeletextUser_Programs_FavouritesId",
-                        column: x => x.FavouritesId,
+                        name: "FK_Favourites_Programs_ProgramId",
+                        column: x => x.ProgramId,
                         principalTable: "Programs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -285,14 +291,24 @@ namespace Teletext.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favourites_ProgramId",
+                table: "Favourites",
+                column: "ProgramId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favourites_UserId",
+                table: "Favourites",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Programs_ChannelId",
                 table: "Programs",
                 column: "ChannelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TVProgramTeletextUser_FavouritesId",
-                table: "TVProgramTeletextUser",
-                column: "FavouritesId");
+                name: "IX_Programs_TeletextUserId",
+                table: "Programs",
+                column: "TeletextUserId");
         }
 
         /// <inheritdoc />
@@ -317,16 +333,16 @@ namespace Teletext.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "TVProgramTeletextUser");
+                name: "Favourites");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Programs");
 
             migrationBuilder.DropTable(
-                name: "Programs");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Channels");

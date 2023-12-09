@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@model IEnumerable<Teletext.Models.TVChannel>
+
+<div class="container">
     <h1 class="mt-5">TV Channels</h1>
 
     <div class="row mt-4">
@@ -60,7 +62,15 @@
                     @foreach (var program in channel.Programs)
                     {
                         <div class="mb-3">
-                            <h4>@program.Name</h4>
+                            <div class="d-flex">
+                                <h4 class="flex-grow-1">@program.Name</h4>
+                                <div>
+                                    <form action="/home/addtofavourites" method="get">
+                                        <input type="hidden" name="programId" value="@program.Id" />
+                                        <button type="submit" class="btn btn-sm">Kedvencem</button>
+                                    </form>
+                                </div>
+                            </div>
                             <div>
                                 <span class="badge bg-primary">@program.Genre</span>
                                 <span class="badge bg-secondary">Age Rating: @program.AgeRating</span>

@@ -60,5 +60,10 @@ namespace Teletext.Helpers
             _tVPrograms.Add(new TVProgram("News", 30, 12, Genre.News, _tVChannels[1], airDaysEveryDay, airTimesEveryDay, new DateOnly(2023, 12, 6)));
             _tVPrograms.Add(new TVProgram("Gold Rush", 45, 8, Genre.Documentary, _tVChannels[2], airDaysWeekend, airTimesWeekend, new DateOnly(2023, 12, 6)));
         }
+
+        public void CreateFavourites()
+        {
+
+        }
     }
 }
