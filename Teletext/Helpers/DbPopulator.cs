@@ -55,10 +55,10 @@ namespace Teletext.Helpers
             var airDaysWeekend = new List<DayOfWeek> { DayOfWeek.Saturday, DayOfWeek.Sunday };
             var airTimesWeekend = new List<TimeSpan> { new TimeSpan(12, 0, 0), new TimeSpan(15, 0, 0) };
 
-            _tVPrograms.Add(new TVProgram("Breaking Bad", 60, 16, Genre.Drama, _tVChannels[0], airDaysWeekdays, airTimesWeekdays));
-            _tVPrograms.Add(new TVProgram("The Big Bang Theory", 30, 6, Genre.Comedy, _tVChannels[0], airDaysWeekdays2, airTimesWeekdays2));
-            _tVPrograms.Add(new TVProgram("News", 30, 12, Genre.News, _tVChannels[1], airDaysEveryDay, airTimesEveryDay));
-            _tVPrograms.Add(new TVProgram("Gold Rush", 45, 8, Genre.Documentary, _tVChannels[2], airDaysWeekend, airTimesWeekend));
+            _tVPrograms.Add(new TVProgram("Breaking Bad", 60, 16, Genre.Drama, _tVChannels[0], airDaysWeekdays, airTimesWeekdays, new DateOnly(2023, 11, 9)));
+            _tVPrograms.Add(new TVProgram("The Big Bang Theory", 30, 6, Genre.Comedy, _tVChannels[0], airDaysWeekdays2, airTimesWeekdays2, new DateOnly(2023, 10, 25)));
+            _tVPrograms.Add(new TVProgram("News", 30, 12, Genre.News, _tVChannels[1], airDaysEveryDay, airTimesEveryDay, new DateOnly(2023, 12, 6)));
+            _tVPrograms.Add(new TVProgram("Gold Rush", 45, 8, Genre.Documentary, _tVChannels[2], airDaysWeekend, airTimesWeekend, new DateOnly(2023, 12, 6)));
         }
     }
 }

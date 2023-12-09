@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1pmBYsIX9QnoXI4VOiyZmnWGQerA554yzeoiSaYp4EKcMYzupGrvL59TvfRh0HbxJScOLWxAlNc7+5shoeWsvg==",
+  "dgSpecHash": "z4w7XyKIfgv3wJJwBbG3hBsirO4TdosnLW42aj5KGBgaXSIlAqhRfzerdpgmX+CqHQthgxQoEnB2JPTILSSTHQ==",
   "success": true,
   "projectFilePath": "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\kozar\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",
+    "C:\\Users\\kozar\\.nuget\\packages\\erikej.entityframeworkcore.sqlserver.dateonlytimeonly\\7.0.5\\erikej.entityframeworkcore.sqlserver.dateonlytimeonly.7.0.5.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

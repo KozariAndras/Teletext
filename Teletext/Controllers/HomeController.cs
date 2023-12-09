@@ -35,6 +35,17 @@ namespace Teletext.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult ApplyFilters(DateOnly date, string channel,TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
+        {
+            ViewData.Add("Date", date.ToString());
+            ViewData.Add("Channel", channel);
+            ViewData.Add("TimeFrom", timeFrom);
+            ViewData.Add("TimeTo", timeTo);
+            ViewData.Add("Genre", genre);
+            return View("Index", _dataHandler.GetAllTVChannels().Result);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

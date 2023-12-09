@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "Teletext/1.0.0": {
         "dependencies": {
+          "ErikEJ.EntityFrameworkCore.SqlServer.DateOnlyTimeOnly": "7.0.5",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "7.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.12",
           "Microsoft.AspNetCore.Identity.UI": "7.0.12",
@@ -68,6 +69,18 @@
           "lib/netcoreapp3.0/Enums.NET.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.1.0"
+          }
+        }
+      },
+      "ErikEJ.EntityFrameworkCore.SqlServer.DateOnlyTimeOnly/7.0.5": {
+        "dependencies": {
+          "Microsoft.Data.SqlClient": "5.1.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.12"
+        },
+        "runtime": {
+          "lib/net6.0/EntityFrameworkCore.SqlServer.DateOnlyTimeOnly.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.5.0"
           }
         }
       },
@@ -2914,6 +2927,13 @@
       "sha512": "sha512-OUGCd5L8zHZ61GAf436G0gf/H6yrSUkEpV5vm2CbCUuz9Rx7iLFLP5iHSSfmOtqNpuyo4vYte0CvYEmPZXRmRQ==",
       "path": "enums.net/4.0.1",
       "hashPath": "enums.net.4.0.1.nupkg.sha512"
+    },
+    "ErikEJ.EntityFrameworkCore.SqlServer.DateOnlyTimeOnly/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kGXyIHaCwFrQLaRQ+iPmSuuiV9OFXa3Ykq8LC8JM7zAxTitJXJJNTGOb6jqeQzuNQwb+8KTyi6iVQgeEgf1XlA==",
+      "path": "erikej.entityframeworkcore.sqlserver.dateonlytimeonly/7.0.5",
+      "hashPath": "erikej.entityframeworkcore.sqlserver.dateonlytimeonly.7.0.5.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",

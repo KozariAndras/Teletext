@@ -201,6 +201,7 @@ namespace Teletext.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TVProgramId = table.Column<long>(type: "bigint", nullable: false),
+                    StartDate = table.Column<DateOnly>(type: "date", nullable: false),
                     Day = table.Column<int>(type: "int", nullable: false),
                     Time = table.Column<TimeSpan>(type: "time", nullable: false)
                 },

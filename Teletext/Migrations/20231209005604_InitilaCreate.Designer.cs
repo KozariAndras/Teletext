@@ -12,7 +12,7 @@ using Teletext.Areas.Identity.Data;
 namespace Teletext.Migrations
 {
     [DbContext(typeof(TeletextContext))]
-    [Migration("20231205205025_InitilaCreate")]
+    [Migration("20231209005604_InitilaCreate")]
     partial class InitilaCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Teletext.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AiringScheduel", b =>
+            modelBuilder.Entity("AiringSchedule", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,6 +35,9 @@ namespace Teletext.Migrations
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<long>("TVProgramId")
                         .HasColumnType("bigint");
@@ -332,10 +335,10 @@ namespace Teletext.Migrations
                     b.HasDiscriminator().HasValue("TeletextUser");
                 });
 
-            modelBuilder.Entity("AiringScheduel", b =>
+            modelBuilder.Entity("AiringSchedule", b =>
                 {
                     b.HasOne("Teletext.Models.TVProgram", "TVProgram")
-                        .WithMany("Scheduels")
+                        .WithMany("Schedules")
                         .HasForeignKey("TVProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -427,7 +430,7 @@ namespace Teletext.Migrations
 
             modelBuilder.Entity("Teletext.Models.TVProgram", b =>
                 {
-                    b.Navigation("Scheduels");
+                    b.Navigation("Schedules");
                 });
 #pragma warning restore 612, 618
         }

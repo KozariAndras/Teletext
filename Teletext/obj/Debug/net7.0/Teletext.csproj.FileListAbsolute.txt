@@ -591,3 +591,5 @@ E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
 E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
 E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\SixLabors.Fonts.dll
 E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\EntityFrameworkCore.SqlServer.DateOnlyTimeOnly.dll
+E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\EFCoreSqlServerDateOnlyTimeOnly.cs

@@ -1,7 +1,52 @@
-﻿@model List<TVChannel>
-
-<div class="container">
+﻿<div class="container">
     <h1 class="mt-5">TV Channels</h1>
+
+    <div class="row mt-4">
+        <form id="filterForm" asp-controller="Home" asp-action="ApplyFilters">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="dateFilter">Date:</label>
+                        <input type="date" id="dateFilter" class="form-control" name="date" value="@ViewBag.Date">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="channelFilter">TV Channel:</label>
+                        <select id="channelFilter" class="form-control" name="channel">
+                            <option value="" selected="@ViewBag.Channel">All</option>
+                            @foreach (var channel in Model)
+                            {
+                                <option value="@channel.Name">@channel.Name</option>
+                            }
+                        </select>
+                    </div>                   
+                    <div class="col-md-6">
+                        <label for="timeFilterFrom">Time From:</label>
+                        <input type="time" id="timeFilterFrom" class="form-control" name="timeFrom" value="@ViewBag.TimeFrom">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="timeFilterTo">Time To:</label>
+                        <input type="time" id="timeFilterTo" class="form-control" name="timeTo" value="@ViewBag.TimeTo">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="genreFilter">Genre:</label>
+                        <select id="genreFilter" class="form-control" name="genre">
+                            <option value="" selected="@ViewBag.Genre">All</option>
+                            @foreach (var channel in Model)
+                            {
+                                foreach (var program in channel.Programs)
+                                {
+                                    <option value="@program.Genre">@program.Genre</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <button id="applyFilters" class="btn btn-primary" type="submit">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
     @foreach (var channel in Model)
     {
@@ -17,11 +62,10 @@
                         <div class="mb-3">
                             <h4>@program.Name</h4>
                             <div>
-                                <span class="badge bg-primary">@program.Genre</span> <!-- Display program genre -->
-                                <span class="badge bg-secondary">Age Rating: @program.AgeRating</span> <!-- Display age rating -->
+                                <span class="badge bg-primary">@program.Genre</span>
+                                <span class="badge bg-secondary">Age Rating: @program.AgeRating</span>
                             </div>
 
-                            <!-- Display airing schedules -->
                             <table class="table table-bordered mt-2">
                                 <thead>
                                     <tr>

@@ -51,7 +51,7 @@ namespace Teletext.Models
         public virtual List<TeletextUser> FavBy { get; set; }
 
 
-        public TVProgram(string name, int duration, int ageRating, Genre programGenre,TVChannel channel, List<DayOfWeek> airDays, List<TimeSpan> airTimes)
+        public TVProgram(string name, int duration, int ageRating, Genre programGenre,TVChannel channel, List<DayOfWeek> airDays, List<TimeSpan> airTimes, DateOnly date)
         {
             Schedules = new();
             Name = name;
@@ -64,7 +64,7 @@ namespace Teletext.Models
 
             for (int i = 0; i < airDays.Count; i++)
             {
-                Schedules.Add(new AiringSchedule(airDays[i], airTimes[i],this));
+                Schedules.Add(new AiringSchedule(airDays[i], airTimes[i], date, this));
             }
 
         }

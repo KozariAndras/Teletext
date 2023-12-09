@@ -15,6 +15,9 @@ public class AiringSchedule
     public TVProgram TVProgram { get; set; }
 
     [Required]
+    public DateOnly StartDate { get; set; }
+
+    [Required]
     [EnumDataType(typeof(DayOfWeek))]
     public DayOfWeek Day { get; set; }
 
@@ -23,11 +26,12 @@ public class AiringSchedule
     public TimeSpan Time { get; set; }
 
     
-    public AiringSchedule(DayOfWeek day, TimeSpan time, TVProgram program)
+    public AiringSchedule(DayOfWeek day, TimeSpan time, DateOnly date, TVProgram program)
     {
         TVProgram = program;
         Day = day;
         Time = time;
+        StartDate = date;
     }
     
     public AiringSchedule()
