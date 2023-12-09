@@ -1,0 +1,43 @@
+﻿@using Teletext.Models.Dto;
+@model TeletextDto
+
+@{
+    ViewData["Title"] = "TV Programs";
+}
+
+<h1>TV Programs</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Age Rating</th>
+            <th>Channel</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var channel in Model.Channels)
+        {
+            foreach (var program in channel.Programs)
+            {
+                @if (program.IsFavourite)
+                {
+                    <tr>
+                        <td>@program.Name</td>
+                        <td>@program.Duration</td>
+                        <td>@program.AgeRating</td>
+                        <td>@channel.Name</td>
+                        <td>@program.Genre</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <partial name="_FavouriteFormPartial" model="program"/>
+                        </td>
+                    </tr>
+                }              
+            }
+        }
+    </tbody>
+</table>

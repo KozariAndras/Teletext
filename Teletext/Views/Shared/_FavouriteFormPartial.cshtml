@@ -1,0 +1,17 @@
+﻿@using Teletext.Models.Dto;
+@model ProgramDto
+
+@if (Model.IsFavourite)
+{
+    <form asp-action="RemoveFromFavourites" asp-controller="Favourites" method="post">
+        <input type="hidden" name="favouriteId" value="@Model.FavouriteId" />
+        <button type="submit" class="btn btn-sm">Remove from favourites</button>
+    </form>
+}
+else
+{
+    <form asp-action="AddToFavourites" asp-controller="Favourites" method="post">
+        <input type="hidden" name="programId" value="@Model.Id" />
+        <button type="submit" class="btn btn-sm">Add to favourites</button>
+    </form>
+}

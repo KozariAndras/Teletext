@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Teletext.Models.Dto;
+@inject SignInManager<TeletextUser> SignInManager
+@model ProgramDto
+
+<div class="mb-3">
+    <div class="d-flex">
+        <h4 class="flex-grow-1">@Model.Name</h4>
+        <div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <partial name="_FavouriteFormPartial" model="Model" />
+        }
+        else
+        {
+            <p>Sign in to add to favourites!</p>
+        }
+        </div>
+    </div>
+    <div>
+        <span class="badge bg-primary">@Model.Genre</span>
+        <span class="badge bg-secondary">Age Rating: @Model.AgeRating</span>
+    </div>
+
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th>Airing Day</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var airing in Model.AiringSchedules)
+            {
+                <tr>
+                    <td>@airing.Day</td>
+                    <td>@airing.Time</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

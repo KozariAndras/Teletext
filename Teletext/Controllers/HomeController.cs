@@ -15,7 +15,6 @@ namespace Teletext.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<TeletextUser> _userManager;
         private readonly ITeletextRepository _repo;
-        //private readonly ITeletextDataHandler _dataHandler;
 
         public HomeController(ILogger<HomeController> logger, UserManager<TeletextUser> userManager, ITeletextRepository repo)
         {
@@ -56,29 +55,6 @@ namespace Teletext.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        public async Task<IActionResult> Test()
-        {
-            var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
-
-            return Ok();
-        }
-
-        [Authorize, HttpGet]
-        public async Task<IActionResult> AddToFavourites([FromQuery]long programId)
-        {
-            var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
-
-            var fav = new Favourites
-            {
-                UserId = aspnetUser.Id,
-                ProgramId = programId
-            };
-            
-            await _repo.Favourites.Add(fav);
-            
-            return RedirectToAction("Index");
         }
     }
 }

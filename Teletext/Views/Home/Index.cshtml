@@ -57,44 +57,11 @@
             <div class="card-header">
                 <h2>@channel.Name</h2>
             </div>
-
             <div class="card-body">
                 <ul class="list-group">
                     @foreach (var program in channel.Programs)
-                    {
-                        <div class="mb-3">
-                            <div class="d-flex">
-                                <h4 class="flex-grow-1">@program.Name</h4>
-                                <div>
-                                    <form action="/home/addtofavourites" method="get">
-                                        <input type="hidden" name="programId" value="@program.Id" />
-                                        <button type="submit" class="btn btn-sm">Kedvencem</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="badge bg-primary">@program.Genre</span>
-                                <span class="badge bg-secondary">Age Rating: @program.AgeRating</span>
-                            </div>
-
-                            <table class="table table-bordered mt-2">
-                                <thead>
-                                    <tr>
-                                        <th>Airing Day</th>
-                                        <th>Time</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var airing in program.AiringSchedules)
-                                    {
-                                        <tr>
-                                            <td>@airing.Day</td>
-                                            <td>@airing.Time</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                    {                       
+                        <partial name ="_ProgramPartial" model="program" />
                     }
                 </ul>
             </div>

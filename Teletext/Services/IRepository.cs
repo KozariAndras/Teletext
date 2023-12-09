@@ -74,7 +74,10 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public async Task Delete(long id)
     {
-        _context.Set<TEntity>().Remove(await _context.Set<TEntity>().FindAsync(id));
+        if (id <= 0) return;
+
+        var entity = await _context.Set<TEntity>().FindAsync(id);
+        _context.Set<TEntity>().Remove(entity);
         await _context.SaveChangesAsync();
     }
 
@@ -114,39 +117,74 @@ public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
 
     public async Task<TeletextDto> GetDTOChannels(TeletextUser user)
     {
+        
+
         var data = await _context.Channels
             .Include(m => m.Programs)
             .Include(m => m.Programs).ThenInclude(m => m.Schedules)
             .Include(m => m.Programs).ThenInclude(m => m.Favourites)
             .ToListAsync();
 
-        return new TeletextDto
+
+        if (user is not null)
         {
-            User = user,
-            Channels = data.Select(m => new ChannelDto
+            return new TeletextDto
             {
-                Id = m.Id,
-                Name = m.Name,
-                Number = m.Number,
-                Programs = m.Programs.Select(m => new ProgramDto
+                User = user,
+                Channels = data.Select(m => new ChannelDto
                 {
                     Id = m.Id,
                     Name = m.Name,
-                    Duration = m.Duration,
-                    AgeRating = m.AgeRating,
-                    Genre = m.Genre,
-                    IsFavourite = m.Favourites.Any(f => f.UserId == user.Id),
-                    AiringSchedules = m.Schedules.Select(m => new AiringScheduleDto
+                    Number = m.Number,
+                    Programs = m.Programs.Select(m => new ProgramDto
                     {
                         Id = m.Id,
-                        StartDate = m.StartDate,
-                        Day = m.Day,
-                        Time = m.Time
+                        Name = m.Name,
+                        Duration = m.Duration,
+                        AgeRating = m.AgeRating,
+                        Genre = m.Genre,
+                        IsFavourite = m.Favourites.Any(f => f.UserId == user.Id),
+                        FavouriteId = m.Favourites.FirstOrDefault(f => f.UserId == user.Id)?.Id ?? -1,
+                        AiringSchedules = m.Schedules.Select(m => new AiringScheduleDto
+                        {
+                            Id = m.Id,
+                            StartDate = m.StartDate,
+                            Day = m.Day,
+                            Time = m.Time
+                        }).ToList()
                     }).ToList()
                 }).ToList()
-            }).ToList()
 
-        };
+            };
+        }
+        else
+        {
+            return new TeletextDto
+            {
+                Channels = data.Select(m => new ChannelDto
+                {
+                    Id = m.Id,
+                    Name = m.Name,
+                    Number = m.Number,
+                    Programs = m.Programs.Select(m => new ProgramDto
+                    {
+                        Id = m.Id,
+                        Name = m.Name,
+                        Duration = m.Duration,
+                        AgeRating = m.AgeRating,
+                        Genre = m.Genre,
+                        AiringSchedules = m.Schedules.Select(m => new AiringScheduleDto
+                        {
+                            Id = m.Id,
+                            StartDate = m.StartDate,
+                            Day = m.Day,
+                            Time = m.Time
+                        }).ToList()
+                    }).ToList()
+                }).ToList()
+
+            };
+        }      
     }
 }
 
