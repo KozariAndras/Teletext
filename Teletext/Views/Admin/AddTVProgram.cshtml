@@ -11,71 +11,13 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="AddTVProgram" asp-controller="Admin">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" min="0" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AgeRating" class="control-label"></label>
-                <input asp-for="AgeRating" class="form-control" min="0" />
-                <span asp-validation-for="AgeRating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Channel.Name" class="control-label"></label>
-                <select asp-for="Channel.Name" class="form-control" name="ChannelName">
-                    @foreach (var channel in ViewBag.Channels)
-                    {
-                        <option value="@channel.Name">@channel.Name</option>
-                    }
-                </select>
-                <span asp-validation-for="Channel.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" class="form-control">
-                    @foreach (var item in Enum.GetValues(typeof(Genre)))
-                    {
-                        <option value="@item">@item</option>
-                    }
-                </select>
-                <span asp-validation-for="Genre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Schedules[0].Day" class="control-label"></label>
-                <select asp-for="Schedules[0].Day" class="form-control" name="Day">
-                    @foreach (var item in Enum.GetValues(typeof(DayOfWeek)))
-                    {
-                        <option value="@item">@item</option>
-                    }
-                </select>
-                <span asp-validation-for="Schedules[0].Day" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Schedules[0].Time" class="control-label"></label>
-                <input asp-for="Schedules[0].Time" class="form-control" name="Time" />
-                <span asp-validation-for="Schedules[0].Time" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Schedules[0].StartDate" class="control-label"></label>
-                <input type="date" asp-for="Schedules[0].StartDate" name="Date" class="form-control" />
-                <span asp-validation-for="Schedules[0].StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <partial name="_ProgramFormPartial" model="@Model" />
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to admin menu</a>
+    <a asp-action="TVProgramMenu">Back to TVProgram menu</a>
 </div>
 
 @section Scripts {

@@ -38,7 +38,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
     public async Task AddRange(IEnumerable<TEntity> entities)
     {
         _context.Set<TEntity>().AddRange(entities);
-        await _context.SaveChangesAsync();    
+        await _context.SaveChangesAsync();
     }
 
     public async Task<TEntity> GetById(long id)
@@ -46,14 +46,14 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         return await _context.Set<TEntity>().FindAsync(id);
     }
 
-    public async Task<List<TEntity>> GetAll()
+    public virtual async Task<List<TEntity>> GetAll()
     {
         return await _context.Set<TEntity>().ToListAsync();
     }
 
     public async Task Update(TEntity entity)
     {
-        var result = await _context.Set<TEntity>().FindAsync(entity);
+        var result = _context.Set<TEntity>().Where(x => x == entity).FirstOrDefault();
         if (result is not null)
         {
             result = entity;
@@ -118,7 +118,7 @@ public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
     }
     public async Task<TeletextDto> GetDTOChannels(TeletextUser user)
     {
-        
+
 
         var data = await _context.Channels
             .Include(m => m.Programs)
@@ -185,14 +185,38 @@ public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
                 }).ToList()
 
             };
-        }      
-    }  
+        }
+    }
+}
+
+
+public interface ITVProgramRepository : IRepository<TVProgram>
+{
+    new public Task<List<TVProgram>> GetAll();
+}
+
+public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
+{
+    private readonly TeletextContext _context;
+
+    public TVProgramRepository(TeletextContext context) : base(context)
+    {
+        _context = context;
+    }
+
+
+    public override async Task<List<TVProgram>> GetAll()
+    {
+        return await _context.Programs
+            .Include(p => p.Channel)
+            .Include(p => p.Schedules).ToListAsync();
+    }
 }
 
 public interface ITeletextRepository
 {
     ITVChannelRepository Channels { get; }
-    EFRepository<TVProgram> Programs { get; }        
+    ITVProgramRepository Programs { get; }
     EFRepository<AiringSchedule> AiringSchedules { get; }
     EFRepository<Favourites> Favourites { get; }
 }
@@ -202,29 +226,29 @@ public class TeletextRepository : ITeletextRepository
 {
     private TeletextContext _context;
     private ITVChannelRepository? _channelRepo;
-    private EFRepository<TVProgram>? _programRepo;
+    private ITVProgramRepository? _programRepo;
     private EFRepository<AiringSchedule>? _scheduleRepo;
     private EFRepository<Favourites>? _favouriteRepo;
 
-    public ITVChannelRepository Channels 
+    public ITVChannelRepository Channels
     {
-        get 
+        get
         {
             if (_channelRepo is null)
             {
                 _channelRepo = new TVChannelRepository(_context);
             }
-            return _channelRepo;           
-        }       
+            return _channelRepo;
+        }
     }
 
-    public EFRepository<TVProgram> Programs
+    public ITVProgramRepository Programs
     {
         get
         {
             if (_programRepo is null)
             {
-                _programRepo = new EFRepository<TVProgram>(_context);
+                _programRepo = new TVProgramRepository(_context);
             }
             return _programRepo;
         }

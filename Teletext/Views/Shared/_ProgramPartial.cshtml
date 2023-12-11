@@ -20,7 +20,8 @@
     <div>
         <span class="badge bg-primary">@Model.Genre</span>
         <span class="badge bg-secondary">Age Rating: @Model.AgeRating</span>
-        <span class="badge bg-secondary">Premier: @Model.AiringSchedules[0].StartDate</span>
+        @{string date = Model.AiringSchedules is not null && Model.AiringSchedules.Count() != 0 ? Model.AiringSchedules[0].StartDate.ToString() : "N/A";}
+        <span class="badge bg-secondary">Premier: @date </span>
     </div>
 
     <table class="table table-bordered mt-2">
@@ -31,13 +32,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var airing in Model.AiringSchedules)
+            @if (Model.AiringSchedules is not null)
+            {
+                @foreach (var airing in Model.AiringSchedules)
+                {
+                    <tr>
+                        <td>@airing.Day</td>
+                        <td>@airing.Time</td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@airing.Day</td>
-                    <td>@airing.Time</td>
+                    <td>There is no airing data for this program!</td>
                 </tr>
-            }
+            }            
         </tbody>
     </table>
 </div>

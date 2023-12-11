@@ -180,8 +180,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVFZQcm9ncmFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ELTE/Teletext/Teletext/Views/Admin/EditTVProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFRWUHJvZ3JhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ELTE/Teletext/Teletext/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ELTE/Teletext/Teletext/Views/Admin/TVProgramMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVFZQcm9ncmFtTWVudS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ELTE/Teletext/Teletext/Views/Favourites/Index.cshtml]
@@ -206,6 +214,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ELTE/Teletext/Teletext/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ELTE/Teletext/Teletext/Views/Shared/_ProgramFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9ncmFtRm9ybVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ELTE/Teletext/Teletext/Views/Shared/_ProgramPartial.cshtml]

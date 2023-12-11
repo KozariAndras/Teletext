@@ -26,9 +26,22 @@ namespace Teletext.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddTVProgram(string name, int duration, int ageRating, string channelName, Genre genre, DayOfWeek day, TimeSpan time, DateOnly date)
+        public async Task<IActionResult> TVProgramMenu()
         {
-            var channels = _repo.Channels.GetAll().Result;
+            var programs = await _repo.Programs.GetAll();          
+            return View(programs);
+        }
+
+        public async Task<IActionResult> OpenEditTVProgram(long id)
+        {
+            ViewBag.Channels = await _repo.Channels.GetAll();
+            var program = await _repo.Programs.GetById(id);
+            return View("EditTVProgram", program);
+        }
+
+        public async Task<IActionResult> AddTVProgram(string name, int duration, int ageRating, string channelName, Genre genre)
+        {
+            var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
             if (String.IsNullOrEmpty(name)) return View();
@@ -47,20 +60,31 @@ namespace Teletext.Controllers
                 ChannelId = selectedChannel.Id,
                 Genre = genre
             };
-            program.Schedules = new List<AiringSchedule>
-            {
-                new AiringSchedule
-                {
-                    Day = day,
-                    Time = time,
-                    StartDate = date,
-                    TVProgram = program,
-                }
-            };
               
-
             await _repo.Programs.Add(program);
             return Redirect("Index");
         }
+
+        public async Task<IActionResult> EditTVProgram(string name, int duration, int ageRating, string channelName, Genre genre, long id)
+        {
+            var channels = await _repo.Channels.GetAll();
+            ViewBag.Channels = channels;
+
+            if (String.IsNullOrEmpty(name)) return View();
+            if (duration < 0) return View();
+            if (ageRating < 0) return View();
+            if (String.IsNullOrEmpty(channelName)) return View();
+            if (genre == Genre.All) return View();
+
+            var selectedProgram = await _repo.Programs.GetById(id);
+            selectedProgram.Name = name;
+            selectedProgram.Duration = duration;
+            selectedProgram.AgeRating = ageRating;
+            selectedProgram.Genre = genre;
+
+            await _repo.Programs.Update(selectedProgram);
+            return Redirect("Index");
+        }
+
     }
 }

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Teletext.Models.TVProgram>
+
+@{
+    ViewData["Title"] = "TVProgramList";
+}
+
+<h1>TVProgramList</h1>
+
+<p>
+    <a asp-action="AddTVProgram">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Channel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Channel.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    <a asp-action="OpenEditTVProgram" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <a asp-action="Index" >Back to Admin Menu</a>
+</table>
