@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using Teletext.Models;
+using Teletext.Models.Dto;
 
 namespace Teletext.Areas.Identity.Data;
 
@@ -27,4 +28,6 @@ public class TeletextContext : IdentityDbContext<TeletextUser>
             .WithMany(c => c.Programs)
             .HasForeignKey(p => p.ChannelId);
     }
+
+    public DbSet<Teletext.Models.Dto.ProgramDto> ProgramDto { get; set; } = default!;
 }

@@ -6,51 +6,7 @@
 
 <h1>Admin</h1>
 
-<h4>Add a new TVProgram</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AgeRating" class="control-label"></label>
-                <input asp-for="AgeRating" class="form-control" />
-                <span asp-validation-for="AgeRating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ChannelId" class="control-label"></label>
-                <select asp-for="ChannelId" class ="form-control" asp-items="ViewBag.ChannelId">
-                    @foreach (var channel in ViewBag.Channels)
-                    {
-                        <option value="@channel.Id">@channel.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" class="form-control"></select>
-                <span asp-validation-for="Genre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<a href="/Admin/AddTVProgram">Add New TVProgram</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -25,5 +25,42 @@ namespace Teletext.Controllers
             ViewBag.Channels = await _repo.Channels.GetAll();
             return View();
         }
+
+        public async Task<IActionResult> AddTVProgram(string name, int duration, int ageRating, string channelName, Genre genre, DayOfWeek day, TimeSpan time, DateOnly date)
+        {
+            var channels = _repo.Channels.GetAll().Result;
+            ViewBag.Channels = channels;
+
+            if (String.IsNullOrEmpty(name)) return View();
+            if (duration < 0) return View();
+            if (ageRating < 0) return View();
+            if (String.IsNullOrEmpty(channelName)) return View();
+            if (genre == Genre.All) return View();
+
+            var selectedChannel = channels.FirstOrDefault(c => c.Name == channelName);
+            var program = new TVProgram
+            {
+                Name = name,
+                Duration = duration,
+                AgeRating = ageRating,
+                Channel = selectedChannel,
+                ChannelId = selectedChannel.Id,
+                Genre = genre
+            };
+            program.Schedules = new List<AiringSchedule>
+            {
+                new AiringSchedule
+                {
+                    Day = day,
+                    Time = time,
+                    StartDate = date,
+                    TVProgram = program,
+                }
+            };
+              
+
+            await _repo.Programs.Add(program);
+            return Redirect("Index");
+        }
     }
 }

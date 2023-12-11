@@ -24,5 +24,10 @@ namespace Teletext.Models
             Name = name;
             Number = number;
         }
+
+        public TVChannel()
+        {
+            Programs = new List<TVProgram>();
+        }
     }
 }
