@@ -1,0 +1,61 @@
+﻿@model Teletext.Models.TVProgram
+
+@{
+    ViewData["Title"] = "DetailsTVProgram";
+}
+
+<h1>DetailsTVProgram</h1>
+
+<div>
+    <h4>TVProgram</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AgeRating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AgeRating)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Channel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Channel.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChannelId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChannelId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="OpenEditTVProgram" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="TVProgramMenu">Back to TVProgram Menu</a>
+</div>

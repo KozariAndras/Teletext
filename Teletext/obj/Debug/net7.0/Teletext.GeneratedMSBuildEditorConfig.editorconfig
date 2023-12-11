@@ -180,6 +180,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVFZQcm9ncmFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ELTE/Teletext/Teletext/Views/Admin/DetailsTVProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1RWUHJvZ3JhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ELTE/Teletext/Teletext/Views/Admin/EditTVProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFRWUHJvZ3JhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

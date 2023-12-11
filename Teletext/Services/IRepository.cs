@@ -29,19 +29,19 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         _context = context;
     }
 
-    public async Task Add(TEntity entity)
+    public virtual async Task Add(TEntity entity)
     {
         _context.Set<TEntity>().Add(entity);
         await _context.SaveChangesAsync();
     }
 
-    public async Task AddRange(IEnumerable<TEntity> entities)
+    public virtual async Task AddRange(IEnumerable<TEntity> entities)
     {
         _context.Set<TEntity>().AddRange(entities);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<TEntity> GetById(long id)
+    public virtual async Task<TEntity> GetById(long id)
     {
         return await _context.Set<TEntity>().FindAsync(id);
     }
@@ -51,7 +51,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         return await _context.Set<TEntity>().ToListAsync();
     }
 
-    public async Task Update(TEntity entity)
+    public virtual async Task Update(TEntity entity)
     {
         var result = _context.Set<TEntity>().Where(x => x == entity).FirstOrDefault();
         if (result is not null)
@@ -61,7 +61,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         }
     }
 
-    public async Task UpdateRange(List<TEntity> entities)
+    public virtual async Task UpdateRange(List<TEntity> entities)
     {
         foreach (var entity in entities)
         {
@@ -74,7 +74,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         await _context.SaveChangesAsync();
     }
 
-    public async Task Delete(long id)
+    public virtual async Task Delete(long id)
     {
         if (id <= 0) return;
 
@@ -83,7 +83,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteRange(List<TEntity> entities)
+    public virtual async Task DeleteRange(List<TEntity> entities)
     {
         foreach (var entity in entities)
         {
@@ -92,7 +92,7 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAll()
+    public virtual async Task DeleteAll()
     {
         if (_context.Set<TEntity>().Count() == 0) return;
 
@@ -210,6 +210,14 @@ public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
         return await _context.Programs
             .Include(p => p.Channel)
             .Include(p => p.Schedules).ToListAsync();
+    }
+
+    public override async Task<TVProgram> GetById(long id)
+    {
+        return await _context.Programs
+            .Include(p => p.Channel)
+            .Include(p => p.Schedules)
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 }
 

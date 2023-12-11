@@ -32,6 +32,12 @@ namespace Teletext.Controllers
             return View(programs);
         }
 
+        public async Task<IActionResult> OpenAddTVProgram()
+        {
+            ViewBag.Channels = await _repo.Channels.GetAll();
+            return View("AddTVProgram");
+        }
+
         public async Task<IActionResult> OpenEditTVProgram(long id)
         {
             ViewBag.Channels = await _repo.Channels.GetAll();
@@ -77,14 +83,29 @@ namespace Teletext.Controllers
             if (genre == Genre.All) return View();
 
             var selectedProgram = await _repo.Programs.GetById(id);
+            var channel = channels.FirstOrDefault(c => c.Name == channelName);
             selectedProgram.Name = name;
             selectedProgram.Duration = duration;
             selectedProgram.AgeRating = ageRating;
             selectedProgram.Genre = genre;
+            selectedProgram.Channel = channel;
 
             await _repo.Programs.Update(selectedProgram);
             return Redirect("Index");
         }
 
+
+        public async Task<IActionResult> DeleteTVProgram(long id)
+        {
+            await _repo.Programs.Delete(id);
+            var programs = await _repo.Programs.GetAll();
+            return View("TVProgramMenu",programs);
+        }
+
+        public async Task<IActionResult> DetailsTVProgram(long id)
+        {
+            var program = await _repo.Programs.GetById(id);
+            return View("DetailsTVProgram", program);
+        }
     }
 }
