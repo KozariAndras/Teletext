@@ -22,8 +22,8 @@ namespace Teletext.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var aspnetUser = _userManager.GetUserAsync(HttpContext.User).Result;
-            var dto = _repo.Channels.GetDTOChannels(aspnetUser).Result;
+            var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
+            var dto = await _repo.Channels.GetDTOChannels(aspnetUser);
             return View(dto);
         }
 

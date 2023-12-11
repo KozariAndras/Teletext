@@ -37,18 +37,14 @@ namespace Teletext.Controllers
         }
 
         [HttpPost]
-        public IActionResult ApplyFilters(DateOnly date, string channelName,TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
+        public async Task<IActionResult> ApplyFilters(DateOnly date, string channelName,TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
         {
-            ViewData.Add("Date", date.ToString());
-            ViewData.Add("Channel", channelName);
-            ViewData.Add("TimeFrom", timeFrom);
-            ViewData.Add("TimeTo", timeTo);
-            ViewData.Add("Genre", genre);
+            var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
+            var channels = await _repo.Channels.GetDTOChannels(aspnetUser);
 
-            //var filterdChannels = FilterAll(date, channelName, timeFrom, timeTo, genre);
-            var aspnetUser = _userManager.GetUserAsync(HttpContext.User).Result;
-            var filterdChannels = _repo.Channels.GetAll();
-            return View("Index", filterdChannels);
+            await _repo.Channels.FilterByDate(ref channels, date);
+
+            return View("Index", channels);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
