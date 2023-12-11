@@ -253,14 +253,9 @@ namespace Teletext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TeletextUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ChannelId");
-
-                    b.HasIndex("TeletextUserId");
 
                     b.ToTable("Programs");
                 });
@@ -401,7 +396,7 @@ namespace Teletext.Migrations
                         .IsRequired();
 
                     b.HasOne("Teletext.Models.TeletextUser", "User")
-                        .WithMany()
+                        .WithMany("Favourites")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Program");
@@ -416,10 +411,6 @@ namespace Teletext.Migrations
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Teletext.Models.TeletextUser", null)
-                        .WithMany("Favourites")
-                        .HasForeignKey("TeletextUserId");
 
                     b.Navigation("Channel");
                 });

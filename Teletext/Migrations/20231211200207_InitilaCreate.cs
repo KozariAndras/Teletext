@@ -180,17 +180,11 @@ namespace Teletext.Migrations
                     Duration = table.Column<int>(type: "int", nullable: false),
                     AgeRating = table.Column<int>(type: "int", nullable: false),
                     ChannelId = table.Column<long>(type: "bigint", nullable: false),
-                    Genre = table.Column<int>(type: "int", nullable: false),
-                    TeletextUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Genre = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Programs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Programs_AspNetUsers_TeletextUserId",
-                        column: x => x.TeletextUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Programs_Channels_ChannelId",
                         column: x => x.ChannelId,
@@ -304,11 +298,6 @@ namespace Teletext.Migrations
                 name: "IX_Programs_ChannelId",
                 table: "Programs",
                 column: "ChannelId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Programs_TeletextUserId",
-                table: "Programs",
-                column: "TeletextUserId");
         }
 
         /// <inheritdoc />
@@ -339,10 +328,10 @@ namespace Teletext.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Programs");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Programs");
 
             migrationBuilder.DropTable(
                 name: "Channels");

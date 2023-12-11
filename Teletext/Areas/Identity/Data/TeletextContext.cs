@@ -29,5 +29,4 @@ public class TeletextContext : IdentityDbContext<TeletextUser>
             .HasForeignKey(p => p.ChannelId);
     }
 
-    public DbSet<Teletext.Models.Dto.ProgramDto> ProgramDto { get; set; } = default!;
 }
