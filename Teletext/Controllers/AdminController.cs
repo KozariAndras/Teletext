@@ -118,7 +118,36 @@ namespace Teletext.Controllers
             return View(schedules);
         }
 
+        public async Task<IActionResult> OpenAddSchedule()
+        {
+            
+        }
         
+        public async Task<IActionResult> AddSchedule()
+        {
+            
+        }
+     
+        public async Task<IActionResult> OpenEditSchedule()
+        {
+            
+        }
+
+        public async Task<IActionResult> EditSchedule()
+        {
+            
+        }
+
+        public async Task<IActionResult> DeleteSchedule()
+        {
+            
+        }
+
+        public async Task<IActionResult> DetailsSchedule()
+        {
+            
+        }
+
 
         #endregion
 
