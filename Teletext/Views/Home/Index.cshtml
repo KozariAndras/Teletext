@@ -16,10 +16,13 @@
                         <label for="channelFilter">TV Channel:</label>
                         <select id="channelFilter" class="form-control" name="channelName">
                             <option value="" >All</option>
-                            @foreach (var channel in ViewBag.Channels)
+                            @if (ViewBag.Channels is not null)
                             {
-                                <option value="@channel.Name">@channel.Name</option>
-                            }
+                                @foreach (var channel in ViewBag.Channels)
+                                {
+                                    <option value="@channel.Name">@channel.Name</option>
+                                }
+                            }                            
                         </select>
                     </div>                   
                     <div class="col-md-6">
@@ -41,10 +44,14 @@
                     </div>
                     <div class="col-md-6">
                         <button id="applyFilters" class="btn btn-primary" type="submit">Apply Filters</button>
+                        <button asp-action="ExportToXML" asp-controller="Home" type="submit" class="btn btn-primary" download>Export to XML</button>
                     </div>
                 </div>
             </div>
         </form>
+        <br>
+
+
     </div>
 
     @foreach (var channel in Model.Channels)
@@ -63,4 +70,5 @@
             </div>
         </div>
     }
+
 </div>

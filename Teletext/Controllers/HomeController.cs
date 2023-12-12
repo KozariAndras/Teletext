@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net;
+using System.Xml.Serialization;
 using Teletext.Models;
 using Teletext.Models.Dto;
 using Teletext.Services;
@@ -52,6 +54,34 @@ namespace Teletext.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        public IActionResult ExportToXML(DateOnly date, string channelName, TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
+        {
+            var aspnetUser = _userManager.GetUserAsync(HttpContext.User).Result;
+            var dto = FilterAll(aspnetUser, date, channelName, timeFrom, timeTo, genre).Result;
+
+            string fname = "Teletext.xml";
+            WriteXML(dto, fname);
+
+            if (!System.IO.File.Exists(fname))
+            {
+                return NotFound();
+            }
+
+            Stream stream = System.IO.File.OpenRead(fname);
+            return File(stream, "application/xml", fname);
+        }
+
+        private void WriteXML(TeletextDto dto,string fname)
+        {
+            var TeletextXML = new TeletextXML(dto.Channels);
+            fname = "Teletext.xml";
+            using (var writer = new StreamWriter(fname))
+            {
+                var serializer = new XmlSerializer(typeof(TeletextXML));
+                serializer.Serialize(writer, TeletextXML);
+            }
+        }
+        
 
         #region Filter functions
 
@@ -149,6 +179,7 @@ namespace Teletext.Controllers
         {
             if (dto is null) return Task.CompletedTask;
             if (dto.Channels is null) return Task.CompletedTask;
+            if (timeFrom == TimeSpan.Zero && timeTo == TimeSpan.Zero) return Task.CompletedTask;
 
             for (int i = dto.Channels.Count - 1; i >= 0; i--)
             {
