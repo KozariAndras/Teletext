@@ -61,11 +61,7 @@ namespace Teletext
                         await roleManager.CreateAsync(new IdentityRole(role));
                     }
                 }
-            }
 
-
-            using (var scope = app.Services.CreateScope())
-            {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<TeletextUser>>();
                 
                 string email = "admin@email.com";
@@ -80,8 +76,6 @@ namespace Teletext
                     
                     await userManager.CreateAsync(user, password);
                     await userManager.AddToRoleAsync(user, "Admin");
-
-
                 }
                 
                 var repo = scope.ServiceProvider.GetService<ITeletextRepository>();           

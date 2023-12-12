@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="EditTVProgram" asp-controller="Admin">
             <partial name="_ProgramFormPartial" model="@Model" />
-            <input type="hidden" value="@Model.Id" name="Id"/>
+            <input type="hidden" value="@Model?.Id" name="Id"/>
         </form>
     </div>
 </div>

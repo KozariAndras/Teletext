@@ -4,7 +4,9 @@
 
 <h1>Admin Menu</h1>
 
-<a href="/Admin/TVProgramMenu">TVProgram menu</a>
+<a asp-action="TVProgramMenu">TVProgram menu</a>
+
+<a asp-action="ScheduleMenu">Schedule Menu</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

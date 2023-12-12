@@ -27,6 +27,10 @@ namespace Teletext.Controllers
             return View();
         }
 
+
+        #region TVPrgoram functions
+
+
         public async Task<IActionResult> TVProgramMenu()
         {
             var programs = await _repo.Programs.GetAll();          
@@ -38,6 +42,7 @@ namespace Teletext.Controllers
             ViewBag.Channels = await _repo.Channels.GetAll();
             return View("AddTVProgram");
         }
+
 
         public async Task<IActionResult> OpenEditTVProgram(long id)
         {
@@ -51,7 +56,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (!IsValidInput(name, duration, ageRating, channelName, genre) == false) return View();
+            if (!IsValidTVProgramInput(name, duration, ageRating, channelName, genre)) return View();
 
             var selectedChannel = channels.FirstOrDefault(c => c.Name == channelName);
             var program = new TVProgram
@@ -65,7 +70,7 @@ namespace Teletext.Controllers
             };
               
             await _repo.Programs.Add(program);
-            return Redirect("Index");
+            return View("Index");
         }
 
         public async Task<IActionResult> EditTVProgram(string name, int duration, int ageRating, string channelName, Genre genre, long id)
@@ -73,7 +78,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (!IsValidInput(name, duration, ageRating, channelName, genre) == false) return View();
+            if (!IsValidTVProgramInput(name, duration, ageRating, channelName, genre)) return View();
 
             var selectedProgram = await _repo.Programs.GetById(id);
             var channel = channels.FirstOrDefault(c => c.Name == channelName);
@@ -84,10 +89,10 @@ namespace Teletext.Controllers
             selectedProgram.Channel = channel;
 
             await _repo.Programs.Update(selectedProgram);
-            return Redirect("Index");
+            return View("Index");
         }
 
-
+        [HttpPost]
         public async Task<IActionResult> DeleteTVProgram(long id)
         {
             await _repo.Programs.Delete(id);
@@ -101,7 +106,23 @@ namespace Teletext.Controllers
             return View("DetailsTVProgram", program);
         }
 
-        private bool IsValidInput(string name, int duration, int ageRating, string channelName, Genre genre)
+
+        #endregion
+
+
+        #region Schedule functions
+
+        public async Task<IActionResult> ScheduleMenu()
+        {
+            var schedules = await _repo.AiringSchedules.GetAll();
+            return View(schedules);
+        }
+
+        
+
+        #endregion
+
+        private bool IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre)
         {
             if (String.IsNullOrEmpty(name)) return false;
             if (duration < 0) return false;

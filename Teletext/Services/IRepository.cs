@@ -222,12 +222,58 @@ public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
     }
 }
 
+public interface IAiringScheduleRepository : IRepository<AiringSchedule>
+{ 
+    new Task<AiringSchedule> GetById(long id);
+    new Task<List<AiringSchedule>> GetAll();
+}
+
+public class AiringScheduleRepository : EFRepository<AiringSchedule>, IAiringScheduleRepository
+{
+    private readonly TeletextContext _context;
+
+    public AiringScheduleRepository(TeletextContext context) : base(context)
+    {
+        _context = context;
+    }
+
+    public override async Task<AiringSchedule> GetById(long id)
+    {
+        return await _context.AiringSchedules
+            .Include(s => s.TVProgram)
+            .FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    public override async Task<List<AiringSchedule>> GetAll()
+    {
+        return await _context.AiringSchedules
+            .Include(s => s.TVProgram)
+            .ToListAsync();
+    }
+}
+
+public interface IFavouritesRepository : IRepository<Favourites>
+{
+       
+}
+
+public class FavouritesRepository : EFRepository<Favourites>, IFavouritesRepository
+{
+    private readonly TeletextContext _context;
+
+    public FavouritesRepository(TeletextContext context) : base(context)
+    {
+        _context = context;
+    }
+}
+
+
 public interface ITeletextRepository
 {
     ITVChannelRepository Channels { get; }
     ITVProgramRepository Programs { get; }
-    EFRepository<AiringSchedule> AiringSchedules { get; }
-    EFRepository<Favourites> Favourites { get; }
+    IAiringScheduleRepository AiringSchedules { get; }
+    IFavouritesRepository Favourites { get; }
 }
 
 
@@ -236,8 +282,8 @@ public class TeletextRepository : ITeletextRepository
     private TeletextContext _context;
     private ITVChannelRepository? _channelRepo;
     private ITVProgramRepository? _programRepo;
-    private EFRepository<AiringSchedule>? _scheduleRepo;
-    private EFRepository<Favourites>? _favouriteRepo;
+    private IAiringScheduleRepository? _scheduleRepo;
+    private IFavouritesRepository? _favouriteRepo;
 
     public ITVChannelRepository Channels
     {
@@ -263,25 +309,25 @@ public class TeletextRepository : ITeletextRepository
         }
     }
 
-    public EFRepository<AiringSchedule> AiringSchedules
+    public IAiringScheduleRepository AiringSchedules
     {
         get
         {
             if (_scheduleRepo is null)
             {
-                _scheduleRepo = new EFRepository<AiringSchedule>(_context);
+                _scheduleRepo = new AiringScheduleRepository(_context);
             }
             return _scheduleRepo;
         }
     }
 
-    public EFRepository<Favourites> Favourites
+    public IFavouritesRepository Favourites
     {
         get
         {
             if (_favouriteRepo is null)
             {
-                _favouriteRepo = new EFRepository<Favourites>(_context);
+                _favouriteRepo = new FavouritesRepository(_context);
             }
             return _favouriteRepo;
         }
