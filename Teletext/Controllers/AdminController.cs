@@ -115,37 +115,51 @@ namespace Teletext.Controllers
         public async Task<IActionResult> ScheduleMenu()
         {
             var schedules = await _repo.AiringSchedules.GetAll();
-            return View(schedules);
+            return View("ScheduleMenu", schedules);
         }
 
         public async Task<IActionResult> OpenAddSchedule()
         {
+            ViewBag.Programs = await _repo.Programs.GetAll();
             
+            return View("AddSchedule");
         }
         
-        public async Task<IActionResult> AddSchedule()
+        public async Task<IActionResult> AddSchedule(long TVProgramId,DateOnly startDate, DayOfWeek day, TimeSpan time)
         {
-            
+            if (TVProgramId == 0) return View("AddSchedule");
+
+            var program = await _repo.Programs.GetById(TVProgramId);
+            var schedule = new AiringSchedule
+            {
+                StartDate = startDate,
+                Day = day,
+                Time = time,
+                TVProgram = program,
+                TVProgramId = program.Id
+            };
+            program.Schedules.Add(schedule);
+            return View("Index");
         }
      
         public async Task<IActionResult> OpenEditSchedule()
         {
-            
+            return View("EditSchedule");
         }
 
         public async Task<IActionResult> EditSchedule()
         {
-            
+            return View("Index");
         }
 
         public async Task<IActionResult> DeleteSchedule()
         {
-            
+            return View("Index");
         }
 
         public async Task<IActionResult> DetailsSchedule()
         {
-            
+            return View("DetailsSchedule");
         }
 
 

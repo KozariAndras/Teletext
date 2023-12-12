@@ -13,17 +13,28 @@
         <form asp-action="AddSchedule">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TVProgramId" class="control-label"></label>
-                <select asp-for="TVProgramId" class ="form-control" asp-items="ViewBag.TVProgramId"></select>
-            </div>
+                <label asp-for="TVProgram" class="control-label"></label>
+                <select asp-for="TVProgramId" class="form-control" >
+                    @foreach (var item in ViewBag.Programs)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="TVProgramId" class="text-danger"></span>
+            </div>  
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
+                <input asp-for="StartDate" class="form-control" type="date" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Day" class="control-label"></label>
-                <select asp-for="Day" class="form-control"></select>
+                <select asp-for="Day" class="form-control">
+                    @foreach (var item in Enum.GetValues(typeof(DayOfWeek)))
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
                 <span asp-validation-for="Day" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,13 +43,13 @@
                 <span asp-validation-for="Time" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="ScheduleMenu">Back to List</a>
 </div>
 
