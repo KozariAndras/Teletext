@@ -36,9 +36,9 @@
             {
                 @foreach (var airing in Model.AiringSchedules)
                 {
-                    <tr>
+                    <tr> 
                         <td>@airing.Day</td>
-                        <td>@airing.Time</td>
+                        <td>@airing.DisplayTime</td>
                     </tr>
                 }
             }

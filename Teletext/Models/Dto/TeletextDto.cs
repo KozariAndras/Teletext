@@ -35,5 +35,5 @@ public class AiringScheduleDto
     public DateOnly StartDate { get; set; }
     public DayOfWeek Day { get; set; }
     public TimeSpan Time { get; set; }
-
+    public string? DisplayTime { get; set; }
 }

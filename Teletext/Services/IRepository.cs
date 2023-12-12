@@ -137,21 +137,22 @@ public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
                     Id = m.Id,
                     Name = m.Name,
                     Number = m.Number,
-                    Programs = m.Programs.Select(m => new ProgramDto
+                    Programs = m.Programs.Select(p => new ProgramDto
                     {
-                        Id = m.Id,
-                        Name = m.Name,
-                        Duration = m.Duration,
-                        AgeRating = m.AgeRating,
-                        Genre = m.Genre,
-                        IsFavourite = m.Favourites.Any(f => f.UserId == user.Id),
-                        FavouriteId = m.Favourites.FirstOrDefault(f => f.UserId == user.Id)?.Id ?? -1,
-                        AiringSchedules = m.Schedules.Select(m => new AiringScheduleDto
+                        Id = p.Id,
+                        Name = p.Name,
+                        Duration = p.Duration,
+                        AgeRating = p.AgeRating,
+                        Genre = p.Genre,
+                        IsFavourite = p.Favourites.Any(f => f.UserId == user.Id),
+                        FavouriteId = p.Favourites.FirstOrDefault(f => f.UserId == user.Id)?.Id ?? -1,
+                        AiringSchedules = p.Schedules.Select(m => new AiringScheduleDto
                         {
                             Id = m.Id,
                             StartDate = m.StartDate,
                             Day = m.Day,
-                            Time = m.Time
+                            Time = m.Time,
+                            DisplayTime = $"{m.Time} - {m.Time +  new TimeSpan(0,p.Duration,0)}"
                         }).ToList()
                     }).ToList()
                 }).ToList()
