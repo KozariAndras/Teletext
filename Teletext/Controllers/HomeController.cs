@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using Teletext.Areas.Identity.Data;
-using Teletext.Helpers;
 using Teletext.Models;
 using Teletext.Models.Dto;
 using Teletext.Services;
@@ -26,6 +22,7 @@ namespace Teletext.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Channels = await _repo.Channels.GetAll();
             var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
             var dto = await _repo.Channels.GetDTOChannels(aspnetUser);
 
@@ -40,12 +37,13 @@ namespace Teletext.Controllers
         [HttpPost]
         public async Task<IActionResult> ApplyFilters(DateOnly date, string channelName,TimeSpan timeFrom, TimeSpan timeTo, Genre genre)
         {
+            ViewBag.Channels = await _repo.Channels.GetAll();
             var aspnetUser = await _userManager.GetUserAsync(HttpContext.User);
             var channels = await _repo.Channels.GetDTOChannels(aspnetUser);
 
-            await FilterByDate(ref channels, date);
+            var dto = await FilterAll(aspnetUser, date, channelName, timeFrom, timeTo, genre);
 
-            return View("Index", channels);
+            return View("Index", dto);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -70,20 +68,53 @@ namespace Teletext.Controllers
 
         public Task FilterByChannelName(ref TeletextDto dto, string channelName)
         {
+            if (dto is null) return Task.CompletedTask;
+            if (dto.Channels is null) return Task.CompletedTask;
             if (channelName is null) return Task.CompletedTask;
             if (channelName == "Any") return Task.CompletedTask;
             if (string.IsNullOrEmpty(channelName)) return Task.CompletedTask;
 
-            dto.Channels = dto.Channels.Where(c => c.Name == channelName).ToList();
+            for (int i = dto.Channels.Count - 1; i >= 0; i--)
+            {
+                if (dto.Channels[i].Name != channelName)
+                {
+                    dto.Channels.RemoveAt(i);
+                }
+            }
             return Task.CompletedTask;
         }
 
         public Task FilterByDate(ref TeletextDto dto, DateOnly date)
         {
             if (dto is null) return Task.CompletedTask;
+            if (dto.Channels is null) return Task.CompletedTask;         
+            if (date == DateOnly.MinValue) return Task.CompletedTask;
 
-            dto.Channels = dto.Channels.Where(c => c.Programs.Where(p => p.AiringSchedules.Any(s => s.StartDate >= date))
-                .Any(p => p.AiringSchedules.Any(s => s.StartDate >= date))).ToList();
+            for (int i = dto.Channels.Count -1; i >= 0; i--)
+            {
+                if (dto.Channels[i].Programs is null) continue;
+
+                for (int j = dto.Channels[i].Programs.Count -1; j >= 0; j--)
+                {
+                    if (dto.Channels[i].Programs[j].AiringSchedules is null) continue;
+
+                    for (int k = dto.Channels[i].Programs[j].AiringSchedules.Count -1; k >= 0; k--)
+                    {
+                        if (dto.Channels[i].Programs[j].AiringSchedules[k].StartDate >= date)
+                        {
+                            dto.Channels[i].Programs[j].AiringSchedules.RemoveAt(k);
+                        }
+                    }
+                    if (dto.Channels[i].Programs[j].AiringSchedules.Count == 0)
+                    {
+                        dto.Channels[i].Programs.RemoveAt(j);
+                    }
+                }
+                if (dto.Channels[i].Programs.Count == 0)
+                {
+                    dto.Channels.RemoveAt(i);
+                }
+            }
 
             return Task.CompletedTask;
         }
@@ -92,19 +123,77 @@ namespace Teletext.Controllers
         {
             if (dto is null) return Task.CompletedTask;
             if (genre == Genre.All) return Task.CompletedTask;
+            if (dto.Channels is null) return Task.CompletedTask;
 
-            dto.Channels = dto.Channels.Where(c => c.Programs.Where(p => p.Genre == genre)
-                       .Any(p => p.Genre == genre)).ToList();
+            for (int i = dto.Channels.Count - 1; i >= 0; i--)
+            {
+                if (dto.Channels[i].Programs is null) continue;
+
+                for (int j = dto.Channels[i].Programs.Count -1; j >= 0; j--)
+                {
+                    if (dto.Channels[i].Programs[j].Genre != genre)
+                    {
+                        dto.Channels[i].Programs.RemoveAt(j);
+                    }
+                }
+                if (dto.Channels[i].Programs.Count == 0)
+                {
+                    dto.Channels.RemoveAt(i);
+                }
+            }
+
             return Task.CompletedTask;
         }
 
         public Task FilterByTime(ref TeletextDto dto, TimeSpan timeFrom, TimeSpan timeTo)
         {
             if (dto is null) return Task.CompletedTask;
-            if (timeFrom >= timeTo) return Task.CompletedTask;
+            if (dto.Channels is null) return Task.CompletedTask;
 
-            dto.Channels = dto.Channels.Where(c => c.Programs.Where(p => p.AiringSchedules.Any(s => s.Time >= timeFrom && s.Time <= timeTo))
-                              .Any(p => p.AiringSchedules.Any(s => s.Time >= timeFrom && s.Time <= timeTo))).ToList();
+            for (int i = dto.Channels.Count - 1; i >= 0; i--)
+            {
+                if (dto.Channels[i].Programs is null) continue;
+
+                for (int j = dto.Channels[i].Programs.Count -1; j >= 0; j--)
+                {
+                    if (dto.Channels[i].Programs[j].AiringSchedules is null) continue;
+
+                    for (int k = dto.Channels[i].Programs[j].AiringSchedules.Count -1; k >= 0; k--)
+                    {
+                        if (timeFrom < timeTo)
+                        {
+                            if (dto.Channels[i].Programs[j].AiringSchedules[k].Time <= timeFrom || dto.Channels[i].Programs[j].AiringSchedules[k].Time >= timeTo)
+                            {
+                                dto.Channels[i].Programs[j].AiringSchedules.RemoveAt(k);
+                            }
+                        }
+                        else if ( timeFrom > timeTo)
+                        {
+                            if ((dto.Channels[i].Programs[j].AiringSchedules[k].Time <= timeFrom && dto.Channels[i].Programs[j].AiringSchedules[k].Time >= timeTo))
+                            {
+                                dto.Channels[i].Programs[j].AiringSchedules.RemoveAt(k);
+                            }
+                        }
+                        else
+                        {
+                            if (dto.Channels[i].Programs[j].AiringSchedules[k].Time != timeFrom)
+                            {
+                                dto.Channels[i].Programs[j].AiringSchedules.RemoveAt(k);
+                            }
+                        }   
+                        
+                    }
+                    if (dto.Channels[i].Programs[j].AiringSchedules.Count == 0)
+                    {
+                        dto.Channels[i].Programs.RemoveAt(j);
+                    }
+
+                }
+                if (dto.Channels[i].Programs.Count == 0)
+                {
+                    dto.Channels.RemoveAt(i);
+                }
+            }
 
             return Task.CompletedTask;
         }

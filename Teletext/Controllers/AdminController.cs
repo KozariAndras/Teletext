@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer.Localisation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Teletext.Models;
@@ -50,11 +51,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (String.IsNullOrEmpty(name)) return View();
-            if (duration < 0) return View();
-            if (ageRating < 0) return View();
-            if (String.IsNullOrEmpty(channelName)) return View();
-            if (genre == Genre.All) return View();
+            if (!IsValidInput(name, duration, ageRating, channelName, genre) == false) return View();
 
             var selectedChannel = channels.FirstOrDefault(c => c.Name == channelName);
             var program = new TVProgram
@@ -76,11 +73,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (String.IsNullOrEmpty(name)) return View();
-            if (duration < 0) return View();
-            if (ageRating < 0) return View();
-            if (String.IsNullOrEmpty(channelName)) return View();
-            if (genre == Genre.All) return View();
+            if (!IsValidInput(name, duration, ageRating, channelName, genre) == false) return View();
 
             var selectedProgram = await _repo.Programs.GetById(id);
             var channel = channels.FirstOrDefault(c => c.Name == channelName);
@@ -106,6 +99,17 @@ namespace Teletext.Controllers
         {
             var program = await _repo.Programs.GetById(id);
             return View("DetailsTVProgram", program);
+        }
+
+        private bool IsValidInput(string name, int duration, int ageRating, string channelName, Genre genre)
+        {
+            if (String.IsNullOrEmpty(name)) return false;
+            if (duration < 0) return false;
+            if (ageRating < 0) return false;
+            if (String.IsNullOrEmpty(channelName)) return false;
+            if (genre == Genre.All) return false;
+
+            return true;
         }
     }
 }

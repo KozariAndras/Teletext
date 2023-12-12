@@ -16,7 +16,7 @@
                         <label for="channelFilter">TV Channel:</label>
                         <select id="channelFilter" class="form-control" name="channelName">
                             <option value="" >All</option>
-                            @foreach (var channel in Model.Channels)
+                            @foreach (var channel in ViewBag.Channels)
                             {
                                 <option value="@channel.Name">@channel.Name</option>
                             }
@@ -33,13 +33,9 @@
                     <div class="col-md-6">
                         <label for="genreFilter">Genre:</label>
                         <select id="genreFilter" class="form-control" name="genre">
-                            <option value="">All</option>
-                            @foreach (var channel in Model.Channels)
+                            @foreach (var genre in Enum.GetValues(typeof(Genre)))
                             {
-                                foreach (var program in channel.Programs)
-                                {
-                                    <option value="@program.Genre">@program.Genre</option>
-                                }
+                                <option value="@genre">@genre.ToString()</option>                               
                             }
                         </select>
                     </div>
