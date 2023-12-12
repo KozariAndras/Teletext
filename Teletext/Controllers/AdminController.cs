@@ -27,6 +27,43 @@ namespace Teletext.Controllers
             return View();
         }
 
+        #region Channel functions
+
+
+        public async Task<IActionResult> ChannelMenu()
+        {
+            var channels = await _repo.Channels.GetAll();
+            return View("ChannelMenu",channels);
+        }
+
+
+        public async Task<IActionResult> OpenAddChannel()
+        {
+            return View("AddChannel");
+        }
+
+
+        public async Task<IActionResult> AddChannel(string name, string description)
+        {
+            
+            return RedirectToAction("ChannelMenu");
+        }
+
+
+        public async Task<IActionResult> OpenEditChannel(long id)
+        {
+            var channel = await _repo.Channels.GetById(id);
+            return View("EditChannel",channel);
+        }
+
+
+        public async Task<IActionResult> EditChannel(string name, string description, long id)
+        {
+            
+            return RedirectToAction("ChannelMenu");
+        }
+        #endregion
+
 
         #region TVPrgoram functions
 
@@ -130,6 +167,7 @@ namespace Teletext.Controllers
             if (TVProgramId == 0) return View("AddSchedule");
 
             var program = await _repo.Programs.GetById(TVProgramId);
+            if (program.Schedules is not null && program.Schedules.Count > 0) startDate = program.Schedules.FirstOrDefault()!.StartDate;
             var schedule = new AiringSchedule
             {
                 StartDate = startDate,
@@ -138,28 +176,53 @@ namespace Teletext.Controllers
                 TVProgram = program,
                 TVProgramId = program.Id
             };
+
+            if (program.Schedules is null) program.Schedules = new List<AiringSchedule>();
             program.Schedules.Add(schedule);
-            return View("Index");
+            await _repo.Programs.Update(program);
+
+            return RedirectToAction("ScheduleMenu");
         }
      
-        public async Task<IActionResult> OpenEditSchedule()
+        public async Task<IActionResult> OpenEditSchedule(long id)
         {
-            return View("EditSchedule");
+            ViewBag.Programs = await _repo.Programs.GetAll();
+            var schedule = await _repo.AiringSchedules.GetById(id);
+            return View("EditSchedule",schedule);
         }
 
-        public async Task<IActionResult> EditSchedule()
+        public async Task<IActionResult> EditSchedule(long TVProgramId, DateOnly startDate, DayOfWeek day, TimeSpan time, long id)
         {
-            return View("Index");
+            ViewBag.Programs = await _repo.Programs.GetAll();
+            var program = await _repo.Programs.GetById(TVProgramId);
+            if (program.Schedules.First()!.StartDate != startDate)
+            {
+                foreach (var airingSchedule in program.Schedules)
+                {
+                    if (airingSchedule.Id == id)
+                    { 
+                        airingSchedule.Day = day;
+                        airingSchedule.Time = time;
+                    }
+                    airingSchedule.StartDate = startDate;
+                }
+            }
+
+            await _repo.Programs.Update(program);
+            return RedirectToAction("ScheduleMenu");
         }
 
-        public async Task<IActionResult> DeleteSchedule()
+        public async Task<IActionResult> DeleteSchedule(long id)
         {
-            return View("Index");
+            
+            await _repo.AiringSchedules.Delete(id);
+            return RedirectToAction("ScheduleMenu");
         }
 
-        public async Task<IActionResult> DetailsSchedule()
+        public async Task<IActionResult> DetailsSchedule(long id)
         {
-            return View("DetailsSchedule");
+            var schedule = await _repo.AiringSchedules.GetById(id);
+            return View("DetailsSchedule",schedule);
         }
 
 
