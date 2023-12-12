@@ -84,31 +84,9 @@ namespace Teletext
 
                 }
                 
-                var aspnetUser = await userManager.FindByNameAsync(email);
-
-                using var ctx = scope.ServiceProvider.GetService<TeletextContext>();
-                var repo = scope.ServiceProvider.GetService<ITeletextRepository>();
-                /*
-                var fav = await ctx.Favourites
-                    .Include(f => f.User)
-                    .Include(f => f.Program).ThenInclude(m => m.Channel)
-                    .FirstOrDefaultAsync();
-                */
-             
+                var repo = scope.ServiceProvider.GetService<ITeletextRepository>();           
                 var populator = new DbPopulator(repo);
                 await populator.CreateData();
-
-                //var fav = new Favourites
-                //{
-                //    UserId = aspnetUser.Id,
-                //    Program = new TVProgram
-                //    {
-                //        Name = "Test",
-                //        ChannelId = 1
-                //    }
-                //};
-                //ctx.Favourites.Add(fav);
-                //await ctx.SaveChangesAsync();
             }
 
             app.Run();
