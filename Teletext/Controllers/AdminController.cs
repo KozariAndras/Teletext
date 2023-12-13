@@ -141,7 +141,7 @@ namespace Teletext.Controllers
             };
               
             await _repo.Programs.Add(program);
-            return View("Index");
+            return RedirectToAction("TVProgramMenu");
         }
 
         public async Task<IActionResult> EditTVProgram(string name, int duration, int ageRating, string channelName, Genre genre, long id)
@@ -160,10 +160,9 @@ namespace Teletext.Controllers
             selectedProgram.Channel = channel;
 
             await _repo.Programs.Update(selectedProgram);
-            return View("Index");
+            return RedirectToAction("TVProgramMenu");
         }
 
-        [HttpPost]
         public async Task<IActionResult> DeleteTVProgram(long id)
         {
             await _repo.Programs.Delete(id);
@@ -262,9 +261,9 @@ namespace Teletext.Controllers
         #endregion
 
 
-        #region Private functions
+        #region QOL functions
 
-        private async Task<TeletextChartData> GetChartData()
+        public async Task<TeletextChartData> GetChartData()
         {
             var programs = await _repo.Programs.GetAll();
 
@@ -320,7 +319,7 @@ namespace Teletext.Controllers
             return chartData;
         }
 
-        private async Task<bool> IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre, long id)
+        public async Task<bool> IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre, long id)
         {
             if (String.IsNullOrEmpty(name)) return false;
             if (String.IsNullOrWhiteSpace(name)) return false;
@@ -340,7 +339,7 @@ namespace Teletext.Controllers
             return true;
         }
 
-        private async Task<bool> IsValidNewTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre)
+        public async Task<bool> IsValidNewTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre)
         {
 
             if (String.IsNullOrEmpty(name)) return false;
@@ -361,7 +360,7 @@ namespace Teletext.Controllers
         }
 
 
-        private async Task<bool> IsValidTVChannelInput(string name, int number, long id)
+        public async Task<bool> IsValidTVChannelInput(string name, int number, long id)
         {
             if (String.IsNullOrEmpty(name)) return false;
             if (String.IsNullOrWhiteSpace(name)) return false;
@@ -377,7 +376,7 @@ namespace Teletext.Controllers
             return true;
         }
 
-        private async Task<bool> IsValidNewTVChannelInput(string name, int number)
+        public async Task<bool> IsValidNewTVChannelInput(string name, int number)
         {
             if (String.IsNullOrEmpty(name)) return false;
             if (String.IsNullOrWhiteSpace(name)) return false;

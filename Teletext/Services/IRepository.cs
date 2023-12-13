@@ -293,6 +293,12 @@ public class TeletextRepository : ITeletextRepository
     private IAiringScheduleRepository? _scheduleRepo;
     private IFavouritesRepository? _favouriteRepo;
 
+
+    public TeletextRepository(TeletextContext context)
+    {
+        _context = context;
+    }
+
     public ITVChannelRepository Channels
     {
         get
@@ -339,12 +345,5 @@ public class TeletextRepository : ITeletextRepository
             }
             return _favouriteRepo;
         }
-    }
-
-    private bool disposed = false;
-
-    public TeletextRepository(TeletextContext context)
-    {
-        _context = context;
     }
 }

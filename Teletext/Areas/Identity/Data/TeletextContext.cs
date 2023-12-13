@@ -18,6 +18,8 @@ public class TeletextContext : IdentityDbContext<TeletextUser>
         : base(options)
     {
     }
+    public TeletextContext() { }
+    
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
