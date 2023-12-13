@@ -1,7 +1,4 @@
-﻿<head>
-    <link rel="stylesheet" href="~/css/ChartTable.css" />
-</head>
-@using Teletext.Models.Dto;
+﻿@using Teletext.Models.Dto;
 @model TeletextChartData
 @{
     ViewData["Title"] = "View";
@@ -22,24 +19,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<table>
-    <tr>
-        <td style="width: 300px; height: 300px;">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
             <canvas id="WeekdayCount"></canvas>
-        </td>
-        <td style="width: 300px; height: 300px;">
+        </div>
+        <div class="col-md-6">
             <canvas id="WeekendCount"></canvas>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 300px; height: 300px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <canvas id="WeekdayTime"></canvas>
-        </td>
-        <td style="width: 300px; height: 300px;">
+        </div>
+        <div class="col-md-6">
             <canvas id="WeekendTime"></canvas>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>
 
 <script>
     var WeekdayCountLables = [];
@@ -96,7 +93,7 @@
         data: {
             labels: WeekdayCountLables,
             datasets: [{
-                label: 'By Count',
+                label: 'Played on weekdays',
                 data: WeekdayCountData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -119,7 +116,19 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Weekday Count', // Title text
+                fontSize: 18 // Title font size
+            },
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 12,
+                    padding: 10
+                }
+            }
         }
     });
 
@@ -129,7 +138,7 @@
         data: {
             labels: WeekendCountLables,
             datasets: [{
-                label: 'By Count',
+                label: 'Played on weekends',
                 data: WeekendCountData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -152,7 +161,19 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Weekend Count', // Title text
+                fontSize: 18 // Title font size
+            },
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 12,
+                    padding: 10
+                }
+            }
         }
     });
    
@@ -162,7 +183,7 @@
         data: {
             labels: WeekdayTimeLables,
             datasets: [{
-                label: 'By Time',
+                label: 'Minutes played on weekdays',
                 data: WeekdayTimeData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -185,7 +206,19 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Weekday Time', // Title text
+                fontSize: 18 // Title font size
+            },
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 12,
+                    padding: 10
+                }
+            }
         }
     });
 
@@ -195,7 +228,7 @@
         data: {
             labels: WeekendTimeLables,
             datasets: [{
-                label: 'By Time',
+                label: 'Minutes played on weekends',
                 data: WeekendTimeData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -218,7 +251,19 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Weekend Time', // Title text
+                fontSize: 18 // Title font size
+            },
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 12,
+                    padding: 10
+                }
+            }
         }
     });
 

@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\Teletext.bundle.scp.css"
     },
     {
-      "Id": "E:\\ELTE\\Teletext\\Teletext\\wwwroot\\css\\ChartTable.css",
-      "PackagePath": "staticwebassets\\css\\ChartTable.css"
-    },
-    {
       "Id": "E:\\ELTE\\Teletext\\Teletext\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

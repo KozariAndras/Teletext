@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EcMHlmGvNLizK+rXKfTcYwCqzg0QU0yoQROhQLx1+GA=",
+  "Hash": "gkiPKrAekpAS5Cyr/yqScHY5+tNndbVRca8N6iUEWww=",
   "Source": "Teletext",
   "BasePath": "_content/Teletext",
   "Mode": "Default",
@@ -1069,23 +1069,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\ELTE\\Teletext\\Teletext\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Teletext.bundle.scp.css"
-    },
-    {
-      "Identity": "E:\\ELTE\\Teletext\\Teletext\\wwwroot\\css\\ChartTable.css",
-      "SourceId": "Teletext",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ELTE\\Teletext\\Teletext\\wwwroot\\",
-      "BasePath": "_content/Teletext",
-      "RelativePath": "css/ChartTable.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\ChartTable.css"
     },
     {
       "Identity": "E:\\ELTE\\Teletext\\Teletext\\wwwroot\\css\\site.css",

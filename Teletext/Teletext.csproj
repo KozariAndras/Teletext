@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\ChartTable.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Chart.js" Version="3.7.1" />
     <PackageReference Include="ErikEJ.EntityFrameworkCore.SqlServer.DateOnlyTimeOnly" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.11" />
