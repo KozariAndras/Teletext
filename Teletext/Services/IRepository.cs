@@ -5,6 +5,8 @@ using Teletext.Models.Dto;
 
 namespace Teletext.Services;
 
+#region Basic CRUD    
+
 public interface IRepository<TEntity>
 {
     Task Add(TEntity entity);
@@ -99,6 +101,10 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
     }
 }
 
+#endregion
+
+
+#region Higer level CRUD? 
 
 public interface ITVChannelRepository : IRepository<TVChannel>
 {
@@ -275,6 +281,10 @@ public class FavouritesRepository : EFRepository<Favourites>, IFavouritesReposit
     }
 }
 
+#endregion
+
+
+#region Main repository
 
 public interface ITeletextRepository
 {
@@ -346,4 +356,7 @@ public class TeletextRepository : ITeletextRepository
             return _favouriteRepo;
         }
     }
+
 }
+
+#endregion
