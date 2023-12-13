@@ -176,6 +176,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ELTE/Teletext/Teletext/Views/Admin/AddChannel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ2hhbm5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ELTE/Teletext/Teletext/Views/Admin/AddSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU2NoZWR1bGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -188,12 +192,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hhbm5lbE1lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ELTE/Teletext/Teletext/Views/Admin/DetailsChannel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0NoYW5uZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ELTE/Teletext/Teletext/Views/Admin/DetailsSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1NjaGVkdWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ELTE/Teletext/Teletext/Views/Admin/DetailsTVProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1RWUHJvZ3JhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ELTE/Teletext/Teletext/Views/Admin/EditChannel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENoYW5uZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ELTE/Teletext/Teletext/Views/Admin/EditSchedule.cshtml]
@@ -230,6 +242,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ELTE/Teletext/Teletext/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ELTE/Teletext/Teletext/Views/Shared/_ChannelFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGFubmVsRm9ybVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ELTE/Teletext/Teletext/Views/Shared/_FavouriteFormPartial.cshtml]

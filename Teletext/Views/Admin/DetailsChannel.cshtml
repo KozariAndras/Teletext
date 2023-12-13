@@ -1,0 +1,30 @@
+﻿@model Teletext.Models.TVChannel
+
+@{
+    ViewData["Title"] = "DetailsChannel";
+}
+
+<h1>DetailsChannel</h1>
+
+<div>
+    <h4>TVChannel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="OpenEditChannel" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="ChannelMenu">Back to List</a>
+</div>

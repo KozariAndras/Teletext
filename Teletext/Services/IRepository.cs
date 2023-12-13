@@ -105,6 +105,8 @@ public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
 public interface ITVChannelRepository : IRepository<TVChannel>
 {
     Task<TeletextDto> GetDTOChannels(TeletextUser user);
+
+    new Task<List<TVChannel>> GetAll();
 }
 
 
@@ -187,6 +189,14 @@ public class TVChannelRepository : EFRepository<TVChannel>, ITVChannelRepository
 
             };
         }
+    }
+
+    public override async Task<List<TVChannel>> GetAll()
+    {
+        return await _context.Channels
+            .Include(c => c.Programs)
+            .ThenInclude(p => p.Schedules)
+            .ToListAsync();
     }
 }
 

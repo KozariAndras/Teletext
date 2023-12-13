@@ -1,0 +1,23 @@
+﻿@model Teletext.Models.TVChannel
+
+@{
+    ViewData["Title"] = "EditChannel";
+}
+
+<h1>EditChannel</h1>
+
+<h4>TVChannel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditChannel">
+            <partial name="_ChannelFormPartial" model="@Model" />
+            <input type="hidden" value="@Model?.Id" name="id"/>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ChannelMenu">Back to List</a>
+</div>
+

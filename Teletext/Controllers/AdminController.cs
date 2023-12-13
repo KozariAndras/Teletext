@@ -37,15 +37,24 @@ namespace Teletext.Controllers
         }
 
 
-        public async Task<IActionResult> OpenAddChannel()
+        public IActionResult OpenAddChannel()
         {
             return View("AddChannel");
         }
 
 
-        public async Task<IActionResult> AddChannel(string name, string description)
+        public async Task<IActionResult> AddChannel(string name, int number)
         {
-            
+            if (!await IsValidNewTVChannelInput(name, number)) return View("AddChannel");
+
+            var newChannel = new TVChannel
+            {
+                Name = name,
+                Number = number,
+                Programs = new List<TVProgram>()
+            };
+            await _repo.Channels.Add(newChannel);
+
             return RedirectToAction("ChannelMenu");
         }
 
@@ -57,11 +66,33 @@ namespace Teletext.Controllers
         }
 
 
-        public async Task<IActionResult> EditChannel(string name, string description, long id)
+        public async Task<IActionResult> EditChannel(string name, int number, long id)
         {
+            if (!await IsValidTVChannelInput(name, number,id)) return View("EditChannel");
+
+            var channel = await _repo.Channels.GetById(id);
+            channel.Name = name;
+            channel.Number = number;
+            await _repo.Channels.Update(channel);
             
             return RedirectToAction("ChannelMenu");
         }
+
+
+        public async Task<IActionResult> DeleteChannel(long id)
+        {
+            await _repo.Channels.Delete(id);
+            return RedirectToAction("ChannelMenu");
+        }
+
+
+        public async Task<IActionResult> DetailsChannel(long id)
+        {
+            var channel = await _repo.Channels.GetById(id);
+            return View("DetailsChannel",channel);
+        }
+
+
         #endregion
 
 
@@ -93,7 +124,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (!IsValidTVProgramInput(name, duration, ageRating, channelName, genre)) return View();
+            if (!await IsValidNewTVProgramInput(name, duration, ageRating, channelName, genre)) return View();
 
             var selectedChannel = channels.FirstOrDefault(c => c.Name == channelName);
             var program = new TVProgram
@@ -115,7 +146,7 @@ namespace Teletext.Controllers
             var channels = await _repo.Channels.GetAll();
             ViewBag.Channels = channels;
 
-            if (!IsValidTVProgramInput(name, duration, ageRating, channelName, genre)) return View();
+            if (!await IsValidTVProgramInput(name, duration, ageRating, channelName, genre, id)) return View();
 
             var selectedProgram = await _repo.Programs.GetById(id);
             var channel = channels.FirstOrDefault(c => c.Name == channelName);
@@ -133,8 +164,7 @@ namespace Teletext.Controllers
         public async Task<IActionResult> DeleteTVProgram(long id)
         {
             await _repo.Programs.Delete(id);
-            var programs = await _repo.Programs.GetAll();
-            return View("TVProgramMenu",programs);
+            return RedirectToAction("TVProgramMenu");
         }
 
         public async Task<IActionResult> DetailsTVProgram(long id)
@@ -228,15 +258,84 @@ namespace Teletext.Controllers
 
         #endregion
 
-        private bool IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre)
+
+        #region Private functions
+
+
+        private async Task<bool> IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre, long id)
         {
             if (String.IsNullOrEmpty(name)) return false;
+            if (String.IsNullOrWhiteSpace(name)) return false;
             if (duration < 0) return false;
             if (ageRating < 0) return false;
             if (String.IsNullOrEmpty(channelName)) return false;
             if (genre == Genre.All) return false;
 
+            var programs = await _repo.Programs.GetAll();
+            if (programs.Count == 0) return true;
+
+            foreach (var program in programs)
+            {
+                if (program.Name == name && program.Id != id) return false;
+            }
+
             return true;
         }
+
+        private async Task<bool> IsValidNewTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre)
+        {
+
+            if (String.IsNullOrEmpty(name)) return false;
+            if (String.IsNullOrWhiteSpace(name)) return false;
+            if (duration < 0) return false;
+            if (ageRating < 0) return false;
+            if (String.IsNullOrEmpty(channelName)) return false;
+            if (genre == Genre.All) return false;
+
+            var programs = await _repo.Programs.GetAll();
+
+            foreach (var program in programs)
+            {
+                if (program.Name == name) return false;
+            }
+
+            return true;
+        }
+
+
+        private async Task<bool> IsValidTVChannelInput(string name, int number, long id)
+        {
+            if (String.IsNullOrEmpty(name)) return false;
+            if (String.IsNullOrWhiteSpace(name)) return false;
+            if (number < 0) return false;
+
+            var channels = await _repo.Channels.GetAll();
+            foreach (var channel in channels)
+            {
+                if (channel.Name == name && channel.Id != id) return false;
+                if (channel.Number == number && channel.Id != id) return false;
+            }
+
+            return true;
+        }
+
+        private async Task<bool> IsValidNewTVChannelInput(string name, int number)
+        {
+            if (String.IsNullOrEmpty(name)) return false;
+            if (String.IsNullOrWhiteSpace(name)) return false;
+            if (number < 0) return false;
+
+            var channels = await _repo.Channels.GetAll();
+            foreach (var channel in channels)
+            {
+                if (channel.Name == name) return false;
+                if (channel.Number == number) return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
     }
 }
