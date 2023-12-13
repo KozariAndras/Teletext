@@ -15,6 +15,7 @@
             <th>Age Rating</th>
             <th>Channel</th>
             <th>Genre</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +31,8 @@
                         <td>@program.AgeRating</td>
                         <td>@channel.Name</td>
                         <td>@program.Genre</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            <partial name="_FavouriteFormPartial" model="program"/>
+                        <td class="btn btn-primary">
+                            <partial class="btn btn-primary" name="_FavouriteFormPartial" model="program" />
                         </td>
                     </tr>
                 }              

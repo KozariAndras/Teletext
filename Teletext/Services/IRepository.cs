@@ -214,7 +214,7 @@ public class TVProgramRepository : EFRepository<TVProgram>, ITVProgramRepository
     }
 
 
-    public override async Task<List<TVProgram>> GetAll()
+    new public virtual async Task<List<TVProgram>> GetAll()
     {
         return await _context.Programs
             .Include(p => p.Channel)
