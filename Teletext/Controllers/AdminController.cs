@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Teletext.Models;
+using Teletext.Models.Dto;
 using Teletext.Services;
 
 namespace Teletext.Controllers
@@ -23,8 +24,10 @@ namespace Teletext.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Channels = await _repo.Channels.GetAll();
-            return View();
+
+            var chartData = await GetChartData();
+
+            return View("Index",chartData);
         }
 
         #region Channel functions
@@ -261,6 +264,61 @@ namespace Teletext.Controllers
 
         #region Private functions
 
+        private async Task<TeletextChartData> GetChartData()
+        {
+            var programs = await _repo.Programs.GetAll();
+
+            TeletextChartData chartData = new();
+
+            foreach (var program in programs)
+            {
+                foreach (var schedule in program.Schedules)
+                {
+                    if (schedule.Day == DayOfWeek.Saturday || schedule.Day == DayOfWeek.Sunday)
+                    {
+                        if (chartData.WeekendData.ByCount.ContainsKey(program.Genre.ToString()))
+                        {
+                            chartData.WeekendData.ByCount[program.Genre.ToString()]++;
+                        }
+                        else
+                        {
+                            chartData.WeekendData.ByCount.Add(program.Genre.ToString(), 1);
+                        }
+
+                        if (chartData.WeekendData.ByTime.ContainsKey(program.Genre.ToString()))
+                        {
+                            chartData.WeekendData.ByTime[program.Genre.ToString()] += program.Duration;
+                        }
+                        else
+                        {
+                            chartData.WeekendData.ByTime.Add(program.Genre.ToString(), program.Duration);
+                        }
+                    }
+                    else
+                    {
+                        if (chartData.WeekdayData.ByCount.ContainsKey(program.Genre.ToString()))
+                        {
+                            chartData.WeekdayData.ByCount[program.Genre.ToString()]++;
+                        }
+                        else
+                        {
+                            chartData.WeekdayData.ByCount.Add(program.Genre.ToString(), 1);
+                        }
+
+                        if (chartData.WeekdayData.ByTime.ContainsKey(program.Genre.ToString()))
+                        {
+                            chartData.WeekdayData.ByTime[program.Genre.ToString()] += program.Duration;
+                        }
+                        else
+                        {
+                            chartData.WeekdayData.ByTime.Add(program.Genre.ToString(), program.Duration);
+                        }
+                    }
+                }
+            }
+
+            return chartData;
+        }
 
         private async Task<bool> IsValidTVProgramInput(string name, int duration, int ageRating, string channelName, Genre genre, long id)
         {

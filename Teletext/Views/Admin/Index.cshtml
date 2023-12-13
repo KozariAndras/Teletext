@@ -1,4 +1,9 @@
-﻿@{
+﻿<head>
+    <link rel="stylesheet" href="~/css/ChartTable.css" />
+</head>
+@using Teletext.Models.Dto;
+@model TeletextChartData
+@{
     ViewData["Title"] = "View";
 }
 
@@ -9,6 +14,215 @@
 <a asp-action="ScheduleMenu">Schedule Menu</a>
 <br>
 <a asp-action="ChannelMenu">Channel Menu</a>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<table>
+    <tr>
+        <td style="width: 300px; height: 300px;">
+            <canvas id="WeekdayCount"></canvas>
+        </td>
+        <td style="width: 300px; height: 300px;">
+            <canvas id="WeekendCount"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 300px; height: 300px;">
+            <canvas id="WeekdayTime"></canvas>
+        </td>
+        <td style="width: 300px; height: 300px;">
+            <canvas id="WeekendTime"></canvas>
+        </td>
+    </tr>
+</table>
+
+<script>
+    var WeekdayCountLables = [];
+    var WeekdayCountData = [];
+
+    var WeekendCountLables = [];
+    var WeekendCountData = [];
+
+    var WeekdayTimeLables = [];
+    var WeekdayTimeData = [];
+
+    var WeekendTimeLables = [];
+    var WeekendTimeData = [];
+
+
+    var WeekdayCountDataCSharp = @Html.Raw(Json.Serialize(Model.WeekdayData.ByCount));
+    var WeekendCountDataCSharp = @Html.Raw(Json.Serialize(Model.WeekendData.ByCount));
+    var WeekdayTimeDataCSharp = @Html.Raw(Json.Serialize(Model.WeekdayData.ByTime));
+    var WeekendTimeDataCSharp = @Html.Raw(Json.Serialize(Model.WeekendData.ByTime));
+
+
+    for (var key in WeekdayCountDataCSharp) {
+        if (WeekdayCountDataCSharp.hasOwnProperty(key)) {
+            WeekdayCountLables.push(key);
+            WeekdayCountData.push(WeekdayCountDataCSharp[key]);
+        }
+    }
+
+    for (var key in WeekendCountDataCSharp) {
+        if (WeekendCountDataCSharp.hasOwnProperty(key)) {
+            WeekendCountLables.push(key);
+            WeekendCountData.push(WeekendCountDataCSharp[key]);
+        }
+    }
+
+    for (var key in WeekdayTimeDataCSharp) {
+        if (WeekdayTimeDataCSharp.hasOwnProperty(key)) {
+            WeekdayTimeLables.push(key);
+            WeekdayTimeData.push(WeekdayTimeDataCSharp[key]);
+        }
+    }
+
+    for (var key in WeekendTimeDataCSharp) {
+        if (WeekendTimeDataCSharp.hasOwnProperty(key)) {
+            WeekendTimeLables.push(key);
+            WeekendTimeData.push(WeekendTimeDataCSharp[key]);
+        }
+    }
+
+
+    var ctx = document.getElementById('WeekdayCount').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: WeekdayCountLables,
+            datasets: [{
+                label: 'By Count',
+                data: WeekdayCountData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    var ctx = document.getElementById('WeekendCount').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: WeekendCountLables,
+            datasets: [{
+                label: 'By Count',
+                data: WeekendCountData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+   
+    var ctx = document.getElementById('WeekdayTime').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: WeekdayTimeLables,
+            datasets: [{
+                label: 'By Time',
+                data: WeekdayTimeData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    var ctx = document.getElementById('WeekendTime').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: WeekendTimeLables,
+            datasets: [{
+                label: 'By Time',
+                data: WeekendTimeData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

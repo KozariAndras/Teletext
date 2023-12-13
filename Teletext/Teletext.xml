@@ -2,7 +2,7 @@
 <TeletextXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Channels>
     <TVChannelXML>
-      <Name>HBO</Name>
+      <Name>HBO Max</Name>
       <Number>10</Number>
       <Programs>
         <TVProgramXML>
@@ -112,10 +112,21 @@
         </TVProgramXML>
         <TVProgramXML>
           <Name>Celeb watch</Name>
-          <Duration>70</Duration>
+          <Duration>60</Duration>
           <AgeRating>16</AgeRating>
           <Genre>RealityTV</Genre>
-          <AiringSchedules />
+          <AiringSchedules>
+            <AiringScheduleXML>
+              <StartDate>13/12/2023</StartDate>
+              <Day>Monday</Day>
+              <Time>22:03:00</Time>
+            </AiringScheduleXML>
+            <AiringScheduleXML>
+              <StartDate>13/12/2023</StartDate>
+              <Day>Saturday</Day>
+              <Time>09:39:00</Time>
+            </AiringScheduleXML>
+          </AiringSchedules>
         </TVProgramXML>
       </Programs>
     </TVChannelXML>

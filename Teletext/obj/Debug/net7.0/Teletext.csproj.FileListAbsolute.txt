@@ -580,16 +580,5 @@ E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\refint\Teletext.dll
 E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\Teletext.pdb
 E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\Teletext.genruntimeconfig.cache
 E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\ref\Teletext.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\Enums.NET.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\MathNet.Numerics.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\Microsoft.IO.RecyclableMemoryStream.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\NPOI.Core.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\NPOI.OOXML.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\NPOI.OpenXml4Net.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\SixLabors.Fonts.dll
-E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\SixLabors.ImageSharp.dll
 E:\ELTE\Teletext\Teletext\bin\Debug\net7.0\EntityFrameworkCore.SqlServer.DateOnlyTimeOnly.dll
 E:\ELTE\Teletext\Teletext\obj\Debug\net7.0\EFCoreSqlServerDateOnlyTimeOnly.cs
