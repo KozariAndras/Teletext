@@ -12,8 +12,8 @@ using Teletext.Areas.Identity.Data;
 namespace Teletext.Migrations
 {
     [DbContext(typeof(TeletextContext))]
-    [Migration("20231211200207_InitilaCreate")]
-    partial class InitilaCreate
+    [Migration("20231213091106_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

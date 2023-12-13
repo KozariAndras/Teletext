@@ -2,13 +2,13 @@
 <TeletextXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Channels>
     <TVChannelXML>
-      <Name>HBO Max</Name>
+      <Name>HBO</Name>
       <Number>10</Number>
       <Programs>
         <TVProgramXML>
           <Name>Breaking Bad</Name>
           <Duration>60</Duration>
-          <AgeRating>18</AgeRating>
+          <AgeRating>16</AgeRating>
           <Genre>Drama</Genre>
           <AiringSchedules>
             <AiringScheduleXML>
@@ -110,24 +110,6 @@
             </AiringScheduleXML>
           </AiringSchedules>
         </TVProgramXML>
-        <TVProgramXML>
-          <Name>Celeb watch</Name>
-          <Duration>60</Duration>
-          <AgeRating>16</AgeRating>
-          <Genre>RealityTV</Genre>
-          <AiringSchedules>
-            <AiringScheduleXML>
-              <StartDate>13/12/2023</StartDate>
-              <Day>Monday</Day>
-              <Time>22:03:00</Time>
-            </AiringScheduleXML>
-            <AiringScheduleXML>
-              <StartDate>13/12/2023</StartDate>
-              <Day>Saturday</Day>
-              <Time>09:39:00</Time>
-            </AiringScheduleXML>
-          </AiringSchedules>
-        </TVProgramXML>
       </Programs>
     </TVChannelXML>
     <TVChannelXML>
@@ -149,19 +131,6 @@
               <StartDate>06/12/2023</StartDate>
               <Day>Sunday</Day>
               <Time>15:00:00</Time>
-            </AiringScheduleXML>
-          </AiringSchedules>
-        </TVProgramXML>
-        <TVProgramXML>
-          <Name>Myth Busters</Name>
-          <Duration>45</Duration>
-          <AgeRating>12</AgeRating>
-          <Genre>Documentary</Genre>
-          <AiringSchedules>
-            <AiringScheduleXML>
-              <StartDate>13/12/2023</StartDate>
-              <Day>Monday</Day>
-              <Time>06:20:00</Time>
             </AiringScheduleXML>
           </AiringSchedules>
         </TVProgramXML>

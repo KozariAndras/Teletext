@@ -9,277 +9,277 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Teletext
 build_property.RootNamespace = Teletext
-build_property.ProjectDir = E:\ELTE\Teletext\Teletext\
+build_property.ProjectDir = C:\ELTE\Teletext\Teletext\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\ELTE\Teletext\Teletext
+build_property.MSBuildProjectDirectory = C:\ELTE\Teletext\Teletext
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Lockout.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Error.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/ELTE/Teletext/Teletext/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/AddChannel.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/AddChannel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ2hhbm5lbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/AddSchedule.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/AddSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU2NoZWR1bGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/AddTVProgram.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/AddTVProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVFZQcm9ncmFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/ChannelMenu.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/ChannelMenu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hhbm5lbE1lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/DetailsChannel.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/DetailsChannel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0NoYW5uZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/DetailsSchedule.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/DetailsSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1NjaGVkdWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/DetailsTVProgram.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/DetailsTVProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1RWUHJvZ3JhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/EditChannel.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/EditChannel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENoYW5uZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/EditSchedule.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/EditSchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFNjaGVkdWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/EditTVProgram.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/EditTVProgram.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFRWUHJvZ3JhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/Index.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/ScheduleMenu.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/ScheduleMenu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2NoZWR1bGVNZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Admin/TVProgramMenu.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Admin/TVProgramMenu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVFZQcm9ncmFtTWVudS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Favourites/Index.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Favourites/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3VyaXRlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Home/Index.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Home/Privacy.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/Error.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_ChannelFormPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_ChannelFormPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGFubmVsRm9ybVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_FavouriteFormPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_FavouriteFormPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GYXZvdXJpdGVGb3JtUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_LoginPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_ProgramFormPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_ProgramFormPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9ncmFtRm9ybVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_ProgramPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_ProgramPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9ncmFtUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_ScheduleFormPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_ScheduleFormPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY2hlZHVsZUZvcm1QYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/_ViewImports.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/_ViewStart.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/ELTE/Teletext/Teletext/Views/Shared/_Layout.cshtml]
+[C:/ELTE/Teletext/Teletext/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-l9w1iuebfz

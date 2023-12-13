@@ -2,7 +2,7 @@
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
+        <label asp-for="Name" class="control-label">TvProgram Name</label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
@@ -17,7 +17,7 @@
         <span asp-validation-for="AgeRating" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Channel.Name" class="control-label"></label>
+        <label asp-for="Channel.Name" class="control-label">Channel Name</label>
         <select asp-for="Channel.Name" class="form-control" name="ChannelName">
             @foreach (var channel in ViewBag.Channels)
             {

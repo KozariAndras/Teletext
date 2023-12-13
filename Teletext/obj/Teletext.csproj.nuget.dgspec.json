@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj": {}
+    "C:\\ELTE\\Teletext\\Teletext\\Teletext.csproj": {}
   },
   "projects": {
-    "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj": {
+    "C:\\ELTE\\Teletext\\Teletext\\Teletext.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
+        "projectUniqueName": "C:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
         "projectName": "Teletext",
-        "projectPath": "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
+        "projectPath": "C:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
         "packagesPath": "C:\\Users\\kozar\\.nuget\\packages\\",
-        "outputPath": "E:\\ELTE\\Teletext\\Teletext\\obj\\",
+        "outputPath": "C:\\ELTE\\Teletext\\Teletext\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

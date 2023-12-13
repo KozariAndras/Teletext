@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uMQLX4wbat8aa8VfNE9mkUDpeIJhZmafRXSuD/s3uBJHTqFDaDubmKMMmESTJ6WYa2AilqFvUCeKWP3XfB6VHA==",
+  "dgSpecHash": "Wi176H9HNl+Irv21n8ZZ1iSGfiTz1lsciPxW4nVC6nk4TqTonsGs1l3FuYt4TU8xzqQ4tqaC8F2CsHULE8Jw1A==",
   "success": true,
-  "projectFilePath": "E:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
+  "projectFilePath": "C:\\ELTE\\Teletext\\Teletext\\Teletext.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kozar\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\kozar\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
